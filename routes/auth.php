@@ -18,6 +18,8 @@ Route::middleware('guest')->group(function () {
 
     Route::get('register-licenced-company',[RegisterCompanyController::class, 'index'])
                 ->name("register.licenced");
+    Route::post('register-licenced-company',[RegisterCompanyController::class, 'licencedCompanyRegister'])
+                ->name("register.licenced");
     
   Route::get('register-start-up-company',[RegisterCompanyController::class, 'index2'])
                 ->name("register.start-up");

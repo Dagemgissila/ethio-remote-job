@@ -10,12 +10,10 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
-                <a href="index.html" class="nav-item nav-link active">Home</a>
+                <a href="/" class="nav-item nav-link active">Home</a>
                 <a href="about.html" class="nav-item nav-link">Jobs</a>
                 <a href="about.html" class="nav-item nav-link">Freelancer</a>
-                <a href="about.html" class="nav-item nav-link">My Application</a>
-                <a href="about.html" class="nav-item nav-link">Profile</a>
-                <a href="about.html" class="nav-item nav-link">Notification</a>
+               
               
             </div>
         </div>

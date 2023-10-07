@@ -15,70 +15,38 @@
                     @csrf
                     <div class="row g-3 my-3">
 
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="email" class="form-control" value="{{old('company_name')}}"  name="company_name" id="company_name" placeholder="Your Email">
-                                <label for="company_name"> Busines name</label>
+                                <input type="text" class="form-control" value="{{old('founder_name')}}"  name="founder_name" id="founder_name" placeholder="founder name">
+                                <label for="founder_name"> Founder Name</label>
                             </div>
                             <div>
-                                @error("company_name")
+                                @error("email")
                                   <span class="text-danger">{{$message}}</span>
                                 @enderror
                             </div>
-                           
-                        </div>
-
-                        
-                        <h5>Description</h5>
-
-                        <div class="col-12">
-                            <div class="form-floating">
-                                <textarea class="form-control" placeholder="Leave a description here" id="message" style="min-height: 150px"></textarea>
-                                <label for="message">a brief description of your products, services, or solutions</label>
-                            </div>
-
                             <div>
-                                @error("company_name")
-                                  <span class="text-danger">{{$message}}</span>
-                                @enderror
                             </div>
                         </div>
 
-                        <h5> Founders and Leadership Team</h5>
-
-                        <div class="col-12">
-                            <div class="form-floating">
-                                <textarea class="form-control" placeholder="Leave a description here" id="message" style="min-height: 150px"></textarea>
-                                <label for="message">Share the names and roles of the founders and key members of your startup's leadership team.</label>
-                            </div>
-
-                            <div>
-                                @error("company_name")
-                                  <span class="text-danger">{{$message}}</span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <span class="font-weight-bold"> Business Plan and Growth Strategy(Optional)</span>
-                        
-                        <div class="col-12">
-                            <div class="form-floating">
-                                <textarea class="form-control" placeholder="Leave a description here" id="message" style="min-height: 150px"></textarea>
-                                <label for="message">Provide a summary of your business plan and growth strategy, including your short-term and long-term goals</label>
-                            </div>
-
-                            <div>
-                                @error("company_name")
-                                  <span class="text-danger">{{$message}}</span>
-                                @enderror
-                            </div>
-                        </div>
-                        
-                        
                         <div class="col-md-6">
                             <div class="form-floating">
                                 <input type="email" class="form-control" value="{{old('email')}}"  name="email" id="email" placeholder="Your Email">
                                 <label for="email"> Email</label>
+                            </div>
+                            <div>
+                                @error("email")
+                                  <span class="text-danger">{{$message}}</span>
+                                @enderror
+                            </div>
+                            <div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" value="{{old('address')}}"  name="address" id="location" placeholder="Yo">
+                                <label for="email"> Start Up address</label>
                             </div>
                             <div>
                                 @error("email")
@@ -103,6 +71,73 @@
                             </div>
                         </div>
 
+                        <div class="col-md-12">
+                            <div class="form-floating">
+                                <input type="email" class="form-control" value="{{old('company_name')}}"  name="company_name" id="company_name" placeholder="Your Email">
+                                <label for="company_name"> Busines name</label>
+                            </div>
+                            <div>
+                                @error("company_name")
+                                  <span class="text-danger">{{$message}}</span>
+                                @enderror
+                            </div>
+                           
+                        </div>
+
+                    
+
+                        <div class="col-12">
+                            <div class="form-floating">
+                                <textarea class="form-control" placeholder="Leave a description here" id="message" style="min-height: 150px"></textarea>
+                                <label for="message">Brief description of the startup</label>
+                            </div>
+
+                            <div>
+                                @error("company_name")
+                                  <span class="text-danger">{{$message}}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <h5>Social media presence /Optional</h5>
+                        <hr>
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="website" class="form-control" value="{{old('address')}}"  name="postal_code" id="phone_number" placeholder="Established Year">
+                                <label for=""> LinkedIn profile</label>
+                            </div>
+                            <div>
+                                @error("address")
+                                  <span class="text-danger">{{$message}}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="website" class="form-control" value="{{old('address')}}"  name="postal_code" id="phone_number" placeholder="Established Year">
+                                <label for=""> Telegram channel/group</label>
+                            </div>
+                            <div>
+                                @error("address")
+                                  <span class="text-danger">{{$message}}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-md-12">
+                            <div class="form-floating">
+                                <input type="website" class="form-control" value="{{old('address')}}"  name="postal_code" id="phone_number" placeholder="Established Year">
+                                <label for=""> Facebook page </label>
+                            </div>
+                            <div>
+                                @error("address")
+                                  <span class="text-danger">{{$message}}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                       
                         <div class="col-6">
                             <div class="form-floating">
                                 <input type="password" name="password" value="{{old('password')}}"  class="form-control" id="subject" placeholder="Subject">
