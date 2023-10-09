@@ -4,7 +4,7 @@
     <div class="row d-flex justify-content-center align-items-center" >
         <div class="col-md-6 my-5  p-5 bg-white">
             <div class="" >
-                <h2 class="mb-4">Register Us Start up</h2>
+                <h2 class="mb-4">Register us Job Seeker</h2>
                 <hr>
                 @if ($errors->has('error'))
                 <div class="alert alert-danger" role="alert">
@@ -27,11 +27,23 @@
                           @endif
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" value="{{old('founder_name')}}"  name="founder_name" >
-                                <label for="founder_name"> Founder Name</label>
+                                <input type="text" class="form-control" value="{{old('firstname')}}"  name="firstname" >
+                                <label for=""> First Name</label>
                             </div>
                             <div>
-                                @error("founder_name")
+                                @error("firstname")
+                                  <span class="text-danger">{{$message}}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-floating">
+                                <input type="text" class="form-control" value="{{old('lastname')}}"  name="lastname" >
+                                <label for=""> Last Name</label>
+                            </div>
+                            <div>
+                                @error("lastname")
                                   <span class="text-danger">{{$message}}</span>
                                 @enderror
                             </div>
@@ -49,17 +61,6 @@
                             </div>
                         </div>
 
-                        <div class="col-md-6">
-                            <div class="form-floating">
-                                <input type="text" class="form-control" value="{{old('address')}}"  name="address">
-                                <label for=""> Start Up address</label>
-                            </div>
-                            <div>
-                                @error("address")
-                                  <span class="text-danger">{{$message}}</span>
-                                @enderror
-                            </div>
-                        </div>
 
                         <div class="col-md-6">
                             <div class="form-floating">
@@ -72,71 +73,6 @@
                                 @enderror
                             </div>
                         </div>
-
-                        <div class="col-md-12">
-                            <div class="form-floating">
-                                <input type="text" class="form-control" value="{{old('business_name')}}"  name="business_name">
-                                <label for=""> Busines name</label>
-                            </div>
-                            <div>
-                                @error("business_name")
-                                  <span class="text-danger">{{$message}}</span>
-                                @enderror
-                            </div>
-                        </div>
-
-
-                        <div class="col-12">
-                            <div class="form-floating">
-                                <textarea class="form-control" name="description"  style="min-height: 150px">{{old("description")}}</textarea>
-                                <label for="message">Brief description of the startup</label>
-                            </div>
-
-                            <div>
-                                @error("description")
-                                  <span class="text-danger">{{$message}}</span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <h5>Social media presence /Optional</h5>
-                        <hr>
-                        <div class="col-md-6">
-                            <div class="form-floating">
-                                <input type="url" class="form-control" value="{{old('linkdelin')}}"  name="linkdelin" >
-                                <label for=""> LinkedIn profile</label>
-                            </div>
-                            <div>
-                                @error("linkdelin")
-                                  <span class="text-danger">{{$message}}</span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-floating">
-                                <input type="url" class="form-control" value="{{old('telegram')}}"  name="telegram" >
-                                <label for=""> Telegram channel/group</label>
-                            </div>
-                            <div>
-                                @error("telegram")
-                                  <span class="text-danger">{{$message}}</span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="col-md-12">
-                            <div class="form-floating">
-                                <input type="website" class="form-control" value="{{old('facebook')}}"  name="facebook">
-                                <label for=""> Facebook page </label>
-                            </div>
-                            <div>
-                                @error("facebook")
-                                  <span class="text-danger">{{$message}}</span>
-                                @enderror
-                            </div>
-                        </div>
-
 
                         <div class="col-6">
                             <div class="form-floating">

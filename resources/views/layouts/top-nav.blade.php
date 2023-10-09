@@ -13,8 +13,8 @@
                 <a href="/" class="nav-item nav-link active">Home</a>
                 <a href="about.html" class="nav-item nav-link">Jobs</a>
                 <a href="about.html" class="nav-item nav-link">Freelancer</a>
-               
-              
+
+
             </div>
         </div>
           <div class="d-flex">

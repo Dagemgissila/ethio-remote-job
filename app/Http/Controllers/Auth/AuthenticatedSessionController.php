@@ -17,6 +17,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
+
         return view('auth.login');
     }
 
@@ -25,11 +26,29 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
+
         $request->authenticate();
 
         $request->session()->regenerate();
 
-        return redirect()->intended(RouteServiceProvider::HOME);
+        $user = Auth::user();
+        $role=$user->roles->pluck("name")->first();
+
+         if($role == "startup"){
+            return redirect("/startup/dashboard");
+         }
+         else if($role == "company"){
+
+         }
+
+         else if($role=="admin"){
+
+         }
+
+         else if($role == "jobseeker"){
+
+         }
+
     }
 
     /**

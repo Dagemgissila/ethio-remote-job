@@ -28,7 +28,7 @@ class LoginRequest extends FormRequest
     {
         return [
             'email' => ['required', 'string', 'email'],
-            'password' => ['required', 'string'],
+            'password' => ['required', 'string',"max:255"],
         ]
         ;
     }
@@ -44,15 +44,16 @@ class LoginRequest extends FormRequest
 
         if (! Auth::attempt($this->only('email', 'password'), $this->boolean('remember'))) {
             RateLimiter::hit($this->throttleKey());
-     
+
             throw ValidationException::withMessages([
                 'error' => "invalid login detail",
             ]);
 
-          
+
         }
 
-        
+
+
 
         RateLimiter::clear($this->throttleKey());
     }

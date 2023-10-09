@@ -17,7 +17,12 @@
                    {{ session("message") }}
                </div>
            @endif
-           
+
+           @if (session()->has("error"))
+           <div class="bg-success text-white p-2">
+               {{ session("error") }}
+           </div>
+       @endif
                 <form method="POST" action="{{ route('register.licenced') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="row g-3 my-3">
@@ -36,7 +41,7 @@
                             <div>
                             </div>
                         </div>
-                        
+
                         <div class="col-md-6">
                             <div class="form-floating">
                                 <input type="file" class="form-control" required value="{{old('company_logo')}}"  name="company_logo" i >
@@ -123,7 +128,7 @@
                             </div>
                         </div>
 
-                    
+
                         <h5>Social media presence /Optional</h5>
                         <hr>
                         <div class="col-md-6">
@@ -187,7 +192,7 @@
                             @enderror
                         </div>
                        </div>
-                       
+
 
                           <hr>
                         <div class="col-6">
@@ -216,18 +221,18 @@
                                 <label class="form-check-label" for="remember">i agree to <a href="/Terms-of-service-and-policies" class="text-secondary">Terms of service and policies</a></label>
                             </div>
                         </div>
-                        
-                        
+
+
                         <div class="col-4">
                             <button class="btn btn-secondary w-100 py-2" type="submit">Register</button>
                         </div>
                     </div>
                 </form>
-                
+
                 <div class="my-2">
                     <span>Already have account ?</span>
-                    
-                    <a href="{{route('login')}}" class="text-secondary">Sign in</a> 
+
+                    <a href="{{route('login')}}" class="text-secondary">Sign in</a>
                 </div>
             </div>
         </div>

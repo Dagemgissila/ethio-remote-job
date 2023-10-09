@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,11 +23,32 @@ Route::get('/Terms-of-service-and-policies',function(){
     return view('policies');
 });
 
-Route::middleware("auth","company")->group(function(){
-    Route::get('/dashboard', function () {
-        return view('licensedCompany.dashboard');
-    })->name('dashboard');
+Route::middleware('auth')->group(function () {
+    Route::group(['middleware' => ['role:startup']], function () {
+        // Routes accessible only by users with the 'startup' role
+        Route::get('/startup/dashboard', function () {
+            return view('startup.dashboard');
+        })->name('dashboard');
+    });
 });
+
+Route::group(['middleware' => ['role:company']], function () {
+    // Routes accessible only by users with the 'admin' role
+    Route::get("/company/dashboard",function(){
+        dd("me");
+    })->name("dashboard");
+});
+
+Route::group(['middleware' => ['role:company']], function () {
+    // Routes accessible only by users with the 'admin' role
+    Route::get("/me",function(){
+        dd("me");
+    })->name("dashboard");
+});
+
+
+
+
 
 
 
