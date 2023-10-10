@@ -12,7 +12,7 @@
         </div>
       </a>
     </li>
-    
+
     <li class="pt-2 pb-1">
       <span class="nav-item-head">Navigation link</span>
     </li>
@@ -22,7 +22,7 @@
         <span class="menu-title">Dashboard</span>
       </a>
     </li>
-   
+
     <li class="nav-item">
       <a class="nav-link" href="pages/icons/mdi.html">
         <i class="mdi mdi-account-group menu-icon"></i>
@@ -49,7 +49,8 @@
     </li>
 
 
-  
+
+
 
     <li class="nav-item">
       <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">

@@ -1,4 +1,4 @@
-@extends("manager.layouts.app")
+@extends("startup.layouts.app")
 @section("content")
 <h3 class="btn btn-primary text-white fs-5 p-2">dashboard</h3>
 <div class="bg-white p-4">
@@ -15,7 +15,7 @@
                     <div class="row align-items-center mb-2 d-flex">
                         <div class="col-8">
                             <h2 class="d-flex align-items-center mb-0">
-                                100
+                                100000
                             </h2>
                         </div>
                     </div>

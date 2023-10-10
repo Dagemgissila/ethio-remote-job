@@ -14,12 +14,17 @@
                 <a href="about.html" class="nav-item nav-link">Jobs</a>
                 <a href="about.html" class="nav-item nav-link">Freelancer</a>
 
-
+                @auth
+                <a href="{{Auth::user()->roles->pluck("name")->first()}}/dashboard" class="nav-item nav-link">Dashboard</a>
+               @endauth
             </div>
         </div>
-          <div class="d-flex">
+        @guest
+        <div class="d-flex">
             <a href="{{route('login')}}" class="login-btn btn-secondary rounded-1 mx-1 d-flex text-center align-items-center justify-content-center ">Login</a>
             <a href="{{route('register')}}" class="register-btn btn-secondary d-flex text-center align-items-center justify-content-center">Register</a>
           </div>
+        @endguest
+
     </nav>
     <!-- Navbar End -->

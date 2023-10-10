@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\Jobs\JobsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,7 +29,12 @@ Route::middleware('auth')->group(function () {
         // Routes accessible only by users with the 'startup' role
         Route::get('/startup/dashboard', function () {
             return view('startup.dashboard');
-        })->name('dashboard');
+        })->name('startup.dashboard');
+
+        Route::get("jobs",[JobsController::class,"index1"])->name("startup.job");
+        Route::get("job/post",[JobsController::class,"PostJob"])->name("startup.postjob");
+        Route::post("job/post",[JobsController::class,"store"])->name("startup.postjob");
+        
     });
 });
 

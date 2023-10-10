@@ -113,25 +113,25 @@ color: #fff;
     color: #fff;
 }
     </style>
-    
+
   </head>
   <body>
     <div class="container-scroller">
 
-    @include(".manager.layouts.sidebar")
-    @include('manager.layouts.topnav')
+    @include(".startup.layouts.sidebar")
+    @include('startup.layouts.topnav')
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper pb-0">
-            
+
           @yield("content")
-          
-          
-           
+
+
+
           </div>
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
-        
+
           <!-- partial -->
         </div>
         <!-- main-panel ends -->
