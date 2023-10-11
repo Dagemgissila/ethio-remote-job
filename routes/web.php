@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Job;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
@@ -16,9 +17,13 @@ use App\Http\Controllers\Jobs\JobsController;
 |
 */
 
+
 Route::get('/', function () {
-    return view('home');
+    $jobs=Job::query()->where("status","!=",-1)->orderBy("created_at","desc")->limit(5)->get();
+    return view('home',compact("jobs"));
 });
+
+Route::get("jobs",[JobsController::class,"alljobs"])->name("alljobs");
 
 Route::get('/Terms-of-service-and-policies',function(){
     return view('policies');
@@ -31,10 +36,10 @@ Route::middleware('auth')->group(function () {
             return view('startup.dashboard');
         })->name('startup.dashboard');
 
-        Route::get("jobs",[JobsController::class,"index1"])->name("startup.job");
+        Route::get("My-job",[JobsController::class,"index1"])->name("startup.job");
         Route::get("job/post",[JobsController::class,"PostJob"])->name("startup.postjob");
         Route::post("job/post",[JobsController::class,"store"])->name("startup.postjob");
-        
+
     });
 });
 

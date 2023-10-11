@@ -62,7 +62,7 @@ class RegisterCompanyController extends Controller
 
             // Create a new Company
             $company = new Company;
-            $company->company_id = $user->id;
+            $company->user_id = $user->id;
             $company->logo = $logoPath;
             $company->company_name = $request->company_name;
             $company->description = $request->description;
@@ -110,7 +110,7 @@ class RegisterCompanyController extends Controller
         $user->save();
 
         $startup=new Startup;
-        $startup->startup_id=$user->id;
+        $startup->user_id=$user->id;
         $startup->founder_name=$request->founder_name;
         $startup->address=$request->address;
         $startup->phone_number=$request->phone_number;

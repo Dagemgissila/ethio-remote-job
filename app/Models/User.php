@@ -50,14 +50,15 @@ class User extends Authenticatable
 
 
     public function company(){
-        return $this->hasOne(Company::class);
+        return $this->hasOne(Company::class,"user_id");
     }
 
-    public function startup(){
-        return $this->hasOne(Startup::class);
+    public function startup()
+    {
+        return $this->hasOne(Startup::class, 'user_id');
     }
 
     public function jobs(){
-        return $this->hasMany(Job::class);
+        return $this->hasMany(Job::class,"user_id");
     }
 }

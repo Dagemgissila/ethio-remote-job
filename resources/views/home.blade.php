@@ -64,111 +64,43 @@
             <div class="row gap-4">
                 <div class="col-lg-8 col-md-12 d-flex flex-column gap-3">
                     <h2>Recent Jobs</h2>
-                    <div class="job-item p-4 mb-1 wow fadeIn"  data-wow-delay="0.3s" >
-                        <div class="row g-4">
-                            <div class="col-sm-12 col-md-8 d-flex align-items-center">
+                  
+                         @if($jobs->count() > 0)
+                             @foreach($jobs as $job)
+                             <div class="job-item p-4 mb-1 wow fadeIn"  data-wow-delay="0.3s" >
+                        <div class="row g-4 p-0 p-sm-3">
+                            <div class="col-sm-12 col-md-8 d-flex align-items-center ">
                                
-                                <div class="text-start ps-4">
-                                    <h5 class="mb-3">Software Engineer</h5>
-                                     <h6>Company : Private Company</h6>
-                                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                                         Ut eveniet officiis nulla unde minus,....</p>
-            
+                                <div class="text-start ">
+                                    <h5 class="mb-3">Title : {{$job->job_title}}</h5>
+                                   
+                                    @if($job->UserJob)
+                            @if($job->UserJob->company)
+                                <h6>Company: {{$job->UserJob->company->company_name}}</h6>
+                            @elseif($job->UserJob->startup)
+                                <h6>Company: {{$job->UserJob->startup->business_name}}</h6>
+                            @else
+                                <h6>Company/Startup not found</h6>
+                            @endif
+                        @else
+                            <h6>User not found</h6>
+                        @endif
+                        <p>{{ $job->getShortDescription() }}.</p>
+
                                 </div>
                             </div>
                             <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
                                 <div class="d-flex mb-3">
                                     <a class="btn btn-secondary" href="">View Detail</a>
                                 </div>
-                                <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Deadline: 01 Jan, 2045</small>
+                                <small class="text-truncate"><i class="far fa-calendar-alt text-secondary me-2"></i>Deadline: {{$job->deadline}}</small>
                             </div>
                         </div>
                     </div>
 
-                    <div class="job-item p-4 mb-1 wow fadeIn"  data-wow-delay="0.3s">
-                        <div class="row g-4">
-                            <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                               
-                                <div class="text-start ps-4">
-                                    <h5 class="mb-3">Web  Developer</h5>
-                                     <h6>Company : ZayRide</h6>
-                                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                                         Ut eveniet officiis nulla unde minus,....</p>
-            
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                                <div class="d-flex mb-3">
-                                    <a class="btn btn-secondary" href="">View Detail</a>
-                                </div>
-                                <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Deadline: 01 Jan, 2045</small>
-                            </div>
-                        </div>
-                    </div>
+                             @endforeach
 
-                    <div class="job-item p-4 mb-1 wow fadeIn"  data-wow-delay="0.3s">
-                        <div class="row g-4">
-                            <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                               
-                                <div class="text-start ps-4">
-                                    <h5 class="mb-3">Project Manager</h5>
-                                     <h6>Company :  Ethio Telecom</h6>
-                                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                                         Ut eveniet officiis nulla unde minus,....</p>
-            
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                                <div class="d-flex mb-3">
-                                    <a class="btn btn-secondary" href="">View Detail</a>
-                                </div>
-                                <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Deadline: 01 Jan, 2045</small>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="job-item p-4 mb-1 wow fadeIn"  data-wow-delay="0.3s" >
-                        <div class="row g-4">
-                            <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                               
-                                <div class="text-start ps-4">
-                                    <h5 class="mb-3">Software Engineer</h5>
-                                     <h6>Company : Private Company</h6>
-                                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                                         Ut eveniet officiis nulla unde minus,....</p>
-            
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                                <div class="d-flex mb-3">
-                                    <a class="btn btn-secondary" href="">View Detail</a>
-                                </div>
-                                <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Deadline: 01 Jan, 2045</small>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="job-item p-4 mb-1 wow fadeIn"  data-wow-delay="0.3s">
-                        <div class="row g-4">
-                            <div class="col-sm-12 col-md-8 d-flex align-items-center">
-                               
-                                <div class="text-start ps-4">
-                                    <h5 class="mb-3">Web  Developer</h5>
-                                     <h6>Company : ZayRide</h6>
-                                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                                         Ut eveniet officiis nulla unde minus,....</p>
-            
-                                </div>
-                            </div>
-                            <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
-                                <div class="d-flex mb-3">
-                                    <a class="btn btn-secondary" href="">View Detail</a>
-                                </div>
-                                <small class="text-truncate"><i class="far fa-calendar-alt text-primary me-2"></i>Deadline: 01 Jan, 2045</small>
-                            </div>
-                        </div>
-                    </div>
-
+                         @endif
                     <div class="w-100 d-flex justify-content-center">
                          <a href="" class="btn btn-secondary">Browse More job</a>
                     </div>

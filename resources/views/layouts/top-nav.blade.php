@@ -11,7 +11,7 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <div class="navbar-nav ms-auto p-4 p-lg-0">
                 <a href="/" class="nav-item nav-link active">Home</a>
-                <a href="about.html" class="nav-item nav-link">Jobs</a>
+                <a href="{{route('alljobs')}}" class="nav-item nav-link">Jobs</a>
                 <a href="about.html" class="nav-item nav-link">Freelancer</a>
 
                 @auth

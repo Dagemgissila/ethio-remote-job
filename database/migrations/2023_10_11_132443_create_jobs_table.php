@@ -13,14 +13,17 @@ return new class extends Migration
     {
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger("posted_by");
-            $table->foreign("posted_by")->references("id")->on("users")->onDelete("cascade")->onUpdate("cascade");
+            $table->unsignedBigInteger("user_id");
+            $table->foreign("user_id")->references("id")->on("users")->onDelete("cascade")->onUpdate("cascade");
+            $table->string("salary");
+            $table->string("slug");
             $table->string("job_title");
             $table->string("description");
             $table->string("requirement");
             $table->string("status");
             $table->string("deadline");
             $table->timestamps();
+            
         });
     }
 

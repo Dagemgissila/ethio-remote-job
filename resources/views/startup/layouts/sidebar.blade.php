@@ -4,7 +4,7 @@
       <a href="#" class="nav-link flex-column">
 
         <div class="nav-profile-text d-flex ms-0 mb-3 flex-column">
-          <span class="font-weight-semibold mb-1 mt-2 text-center text-white">Dagem Gissila</span>
+       
           <span class="text-secondary icon-sm text-center text-white">Start Up</span>
         </div>
       </a>
@@ -32,8 +32,8 @@
     </li>
     <li class="nav-item">
       <a class="nav-link" href="pages/forms/basic_elements.html">
-        <i class="mdi mdi-account menu-icon"></i>
-        <span class="menu-title">Freelancer</span>
+      <i class="mdi mdi-message menu-icon"></i>
+        <span class="menu-title">Message</span>
       </a>
     </li>
     

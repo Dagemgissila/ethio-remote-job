@@ -10,7 +10,12 @@ class Startup extends Model
 {
     use HasFactory;
 
-    public function startup_user(){
+    public function startup_user()
+    {
         return $this->belongsTo(User::class);
+    }
+
+    public function jobs(){
+        return $this->hasMany(Job::class,"user_id");
     }
 }

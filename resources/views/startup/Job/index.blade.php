@@ -3,10 +3,16 @@
 <div class="row">
               <div class="col-lg-12 grid-margin stretch-card">
                 <div class="card">
+                 
                   <div class="card-body">
                     <h4 class="card-title">
                         <a  href="{{route('startup.postjob')}}"  class="btn btn-primary">Post Job</a>
                     </h4>
+                    @if(session()->has("success"))
+                      <div class="bg-success p-3 text-white ">
+                             {{session("success")}}
+                      </div> 
+                  @endif
                    
                     <div class="table-responsive">
                       <table class="table">
@@ -21,21 +27,42 @@
                             <th>Action</th>
                           </tr>
                         </thead>
-                        <tbody>
+                         @if($jobs->count() > 0)
+                             @foreach($jobs as $job)
+                             <tbody>
                           <tr>
                             <td>1</td>
-                            <td>Software Developer</td>
-                            <td>1000</td>
-                             <td>0 May 2017</td>
-                            <td>20 May 2017</td>
+                            <td>{{$job->job_title}}</td>
+                            <td>{{$job->salary}}</td>
+                             <td>{{$job->created_at}}</td>
+                            <td>{{$job->deadline}}</td>
                             <td>
-                                <button class="btn btn-success">Active</button>
+                                  @if($job->status == 1)
+                                     <span class="font-weight-bold text-success">Active</span>
+                                  @elseif($job-> status == -1)
+                                  <span class="font-weight-bold text-danger">Restricted</span>
+                                  @elseif($job->status == 0)
+                                  <span class="font-weight-bold text-warning">Closed</span>
+                                  @elseif($job->status == 2)
+                                  <span class="font-weight-bold text-danger">Deadline is Passed</span>
+                                  @endif
+
+
                             </td>
                             <td>
-                             <button class="btn btn-primary">View</button>
+                             <button class="btn btn-info">
+                              
+                              View Detail</button>
+                             <button class="btn btn-primary">Edit</button>
+                             <button class="btn btn-danger">Delete</button>
+                             <button class="btn btn-warning">View Application</button>
                             </td>
                           </tr>
                         </tbody>
+
+                             @endforeach
+
+                         @endif
                       </table>
                     </div>
                   </div>
