@@ -15,7 +15,7 @@
       <span class="nav-item-head">Navigation link</span>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="{{route('startup.dashboard')}}">
+      <a class="nav-link" href="{{route('jobseeker.dashboard')}}">
         <i class="mdi mdi-view-dashboard menu-icon"></i>
         <span class="menu-title">Dashboard</span>
       </a>

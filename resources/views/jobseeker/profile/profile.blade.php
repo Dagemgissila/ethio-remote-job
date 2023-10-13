@@ -1,117 +1,337 @@
 @extends("jobseeker.layouts.app")
 @section("content")
-<div class="row d-flex justify-content-center  shadow align-items-center" >
-        <div class="col-md-12 p-5 bg-white">
-            <div class="" >
 
-            @if(session()->has("success"))
-              <div class="bg-success text-white p-2">
-                   {{session("success")}}
-              </div>
-            @endif
-                
-                @if ($errors->has('error'))
-                <div class="alert alert-danger" role="alert">
-                    {{ $errors->first('error') }}
-                </div>
-               @endif
-                <form method="POST" action="{{ route('editprofile') }}" enctype="multipart/form-data">
-                    @csrf
-                 
-                    <div class="row g-3 my-1">
-                        <div class="col-md-4">
-                            <div class="form-floating">
-                                <input type="text" class="form-control" value="{{$profile->firstname}}"  name="firstname">
-                                <label for="">First Name</label>
-                            </div>
-                            <div>
-                                @error("firstname")
-                                  <span class="text-danger">{{$message}}</span>
-                                @enderror
-                            </div>
-                          
-                        </div>
-                        <div class="col-4">
-                            <div class="form-floating">
-                                <input type="text" name="lastname" value="{{$profile->lastname}}"  class="form-control">
-                                <label for="">Last Name</label>
-                            </div>
-                            @error("lastname")
-                            <span class="text-danger">{{$message}}</span>
-                          @enderror
-                        </div>
+<div class="row">
+    
+              <div class="col-md-10 grid-margin stretch-card">
+                <div class="card">
 
-                        <div class="col-4">
-                            <div class="form-floating">
-                                <input type="number" name="phone_number" value="{{$profile->phone_number}}"  class="form-control">
-                                <label for="">Phone Number</label>
-                            </div>
-                            @error("deadline")
-                            <span class="text-danger">{{$message}}</span>
-                          @enderror
-                        </div>
-                        <div class="col-1">
-                        @if ($profile->profile_image)
-    <div class="rounded-circle" style="width: 100px; height: 100px; overflow: hidden;">
-        <img src="{{ asset('storage/' . $profile->profile_image) }}" alt="Profile Picture" width="100">
-    </div>
-@else
-    <p>no profile picture</p>
-@endif
-                        </div>
-
-                        <div class="col-5">
-                            <div class="form-floating">
-                                <input type="file" name="profile_image" accept=".png, .jpg, .jpeg" value="{{$profile->profile_image}}"  class="form-control">
-                                <label for="">Profile Picture</label>
-                            </div>
-          
-                            @error("profile_image")
-                            <span class="text-danger">{{$message}}</span>
-                          @enderror
-                        </div>
- 
-        
-                        <input type="hidden" name="old_picture" value="{{$profile->profile_image}}">
-
-                        <div class="col-6">
-                            <div class="form-floating ">
-                                <input type="file" name="resume" accept=".pdf" value="{{$profile->resume}}"  class="form-control ">
-                                <label for="" class="">Resume</label>
-                            </div>
-                            @if ($profile->resume)
-                                  <a href="{{ asset('storage/' . $profile->resume) }}" target="_blank">Download Resume</a>
-                            @endif
-
-                            @error("resume")
-                                   <span class="text-danger">{{$message}}</span>
-                           @enderror
-                        </div>
-
-                        <input type="hidden" name="old_resume" value="{{$profile->resume}}">
-
-                        <div class="col-12">
-                            <div class="form-floating">
-                                <textarea class="form-control" name="about_me" style="min-height: 150px">{{$profile->about_me}}</textarea>
-                                <label for="">About me</label>
-                            </div>
-
-                            <div>
-                                @error("about_me")
-                                  <span class="text-danger">{{$message}}</span>
-                                @enderror
-                            </div>
-                        </div>
-
-                     
-                     
-                        <div class="col-3">
-                            <button class="btn btn-primary w-100 p-3" type="submit">Save Changes </button>
-                        </div>
+                <ul class="nav nav-pills  p-4" id="pills-tab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="pills-home-tab" data-bs-toggle="pill" data-bs-target="#pills-basicprofile" type="button" role="tab" aria-controls="pills-home" aria-selected="true">Basic Profile</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="pills-profile-tab" data-bs-toggle="pill" data-bs-target="#pills-profile" type="button" role="tab" aria-controls="pills-profile" aria-selected="false">Education</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="pills-experience-tab" data-bs-toggle="pill" data-bs-target="#pills-experience" type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Experince</button>
+  </li>
+</ul>
+@if(session()->has("success"))
+                    <div class="alert alert-success" role="alert">
+                           {{session("success")}}
                     </div>
-                </form>
-               
-            </div>
-        </div>
+                    @endif
+
+<!-- basic profile -->
+<div class="tab-content" id="pills-tabContent">
+  <div class="tab-pane fade show active" id="pills-basicprofile" role="tabpanel" aria-labelledby="pills-home-tab">
+  <div class="card-body m-0 py-0">
+                    <h4 class="card-title">Basic Profile</h4>
+                   
+                    
+                    <form method="POST" action="{{ route('editprofile') }}" enctype="multipart/form-data">
+                    @csrf
+                      <div class="row">
+                      <div class="col-md-6">
+                        <label for="exampleInputUsername1">Firstname</label>
+                        <input type="text" class="form-control" value="{{$profile->firstname}}"  name="firstname" placeholder="firstname" />
+                        @error("firstname")
+                                  <span class="text-danger">{{$message}}</span>
+                                @enderror
+                      </div>
+                             
+            
+                      <div class="col-md-6">
+                        <label for="exampleInputEmail1">Lastname</label>
+                        <input type="text" class="form-control" name="lastname" value="{{$profile->lastname}}" placeholder="lastname" />
+                        @error("lastname")
+                            <span class="text-danger">{{$message}}</span>
+                          @enderror
+                      </div>
+                      </div>
+                           
+                      <div class="form-group">
+                        <label for="exampleInputPassword1">Phone Number</label>
+                        <input type="text" class="form-control" name="phone_number" value="{{$profile->phone_number}}"  placeholder="phone number" />
+                      </div>
+                      @error("phone_number")
+                            <span class="text-danger">{{$message}}</span>
+                          @enderror
+
+                          <div class="form-group">
+                        <label for="exampleInputPassword1">Profile Picture</label>
+                        <input type="file" class="form-control" name="profile_image" accept=".png, .jpg, .jpeg" value="{{$profile->profile_image}}"  placeholder="phone number" />
+                      </div>
+                      @error("profile_image")
+                            <span class="text-danger">{{$message}}</span>
+                          @enderror
+
+                          <div class="form-group">
+                        @if ($profile->profile_image)
+                        <div class="rounded-circle" style="width: 100px; height: 100px; overflow: hidden;">
+                             <img src="{{ asset('storage/' . $profile->profile_image) }}" alt="Profile Picture" width="100">
+                          </div>
+                          @else
+                          <p>no profile picture</p>
+                         @endif    
+                         <input type="hidden" name="old_picture" value="{{$profile->profile_image}}">
+                         <div class="form-group">
+                        <label for="exampleInputPassword1">Resume</label>
+                        <input type="file" class="form-control" name="resume" accept=".pdf" value="{{$profile->resume}}"  placeholder="phone number" />
+                      </div>
+                      @error("resume")
+                            <span class="text-danger">{{$message}}</span>
+                          @enderror
+                          @if ($profile->resume)
+                        <div class="form-group">
+                             <a class="" target="_blank" href="{{ asset('storage/' . $profile->resume) }}" alt="rsume" >Download Cv</a>
+                          </div>
+                          @else
+                          <p>no resume</p>
+                         @endif 
+                         
+                        <input type="hidden" name="old_resume" value="{{$profile->resume}}">
+                      @error("about_me")
+                                  <span class="text-danger">{{$message}}</span>
+                      @enderror
+                      <div class="form-group">
+                        <label for="exampleTextarea1">Textarea</label>
+                        <textarea
+                          class="form-control"
+                          name="about_me"
+                          rows="4"
+                        >{{$profile->about_me}}</textarea>
+                      </div>
+                      @error("about_me")
+                                  <span class="text-danger">{{$message}}</span>
+                      @enderror
+                      <div class="form-group">
+                        <label for="exampleInputConfirmPassword1">Skill</label>
+                        <input type="text" class="form-control" name="skills" value="{{$profile->skills}}"  placeholder="skills" />
+                      </div>
+                      <button type="submit" class="btn btn-primary me-2"> Submit </button>
+                    </form>
+                  </div>
+                </div>
+  </div>
+
+
+
+
+
+  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+    <div class="card-body  m-0 py-0">
+   
+    <form action="{{route('jobseeker.experience')}}" method="POST">
+        @csrf
+                <div class="row">
+                      <div class="col-md-6">
+                        <label for="exampleInputUsername1">Degree Title</label>
+                        <input type="text" class="form-control" required  name="degree" placeholder="Bsc ..." />
+                        @error("degree")
+                                  <span class="text-danger">{{$message}}</span>
+                                @enderror
+                      </div>
+
+                      <div class="col-md-6">
+                        <label for="exampleInputUsername1">Field Of Study</label>
+                        <input type="text" class="form-control" required   name="department" placeholder="Compuster science,IT" />
+                        @error("department")
+                                  <span class="text-danger">{{$message}}</span>
+                                @enderror
+                      </div>
+
+                      <div class="col-md-6">
+                        <label for="exampleInputUsername1">University</label>
+                        <input type="text" class="form-control"    name="university" placeholder="Addis Abeba, AASTU" />
+                        @error("university")
+                                  <span class="text-danger">{{$message}}</span>
+                                @enderror
+                      </div>
+                             
+            
+                      <div class="col-md-6">
+                        <label for="exampleInputEmail1">Start Date</label>
+                        <input type="date" class="form-control" required name="start_date" value="" />
+                        @error("start_date")
+                            <span class="text-danger">{{$message}}</span>
+                          @enderror
+                      </div>
+                      <div class="col-md-6">
+                        <label for="exampleInputEmail1">End Date /if you are under study leave empty</label>
+                        <input type="date" class="form-control" required name="end_date" />
+                        @error("end_date")
+                            <span class="text-danger">{{$message}}</span>
+                          @enderror
+                      </div>
+                      
+                      
+                      </div>
+                      <button type="submit" class="btn btn-primary m-2"> Submit </button>
+                      </div>
+             
+                    
+    </form>
+    <hr>
+    <div class="table-responsive p-3">
+                      <table class="table">
+                       
+                         @if($education->count() > 0)
+                         <thead>
+                          <tr>
+                            <th>No</th>
+                            <th>Degree</th>
+                            
+                            <th>Field Of Study</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            
+                           
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        @php
+                                  $i=0;
+                             @endphp
+                             @foreach($education as $edu)
+                            
+                             <tbody>
+                          <tr>
+                            <td>{{++$i}}</td>
+                            <td>{{$edu->degree}}</td>
+                          
+                             <td>{{$edu->field_of_study}}</td>
+                            <td>{{$edu->start_date}}</td>
+                            <td>{{$edu->end_date}}</td>
+                            <td>
+
+                            <form action="{{route('delete.education')}}" method="post">
+                               @csrf
+                               <input type="hidden" name="id" value="{{$edu->id}}">
+                               <button class="btn btn-primary"><span class="mdi mdi-trash-can menu-icon fs-5"></span></button>
+                              
+                            </form>
+                            <td>   
+                          </tr>
+                        </tbody>
+
+                             @endforeach
+
+                         @endif
+                      </table>
+                    </div>
     </div>
+
+
+    <!-- vvv -->
+
+    <div class="tab-pane fade" id="pills-experience" role="tabpanel" aria-labelledby="pills-profile-tab">
+    <div class="card-body  m-0 py-0">
+   
+    <form action="{{route('jobseeker.experience')}}" method="POST">
+        @csrf
+                <div class="row">
+                      <div class="col-md-6">
+                        <label for="exampleInputUsername1">Degree Title</label>
+                        <input type="text" class="form-control" required  name="degree" placeholder="Bsc ..." />
+                        @error("degree")
+                                  <span class="text-danger">{{$message}}</span>
+                                @enderror
+                      </div>
+
+                      <div class="col-md-6">
+                        <label for="exampleInputUsername1">Field Of Study</label>
+                        <input type="text" class="form-control" required   name="department" placeholder="Compuster science,IT" />
+                        @error("department")
+                                  <span class="text-danger">{{$message}}</span>
+                                @enderror
+                      </div>
+
+                      <div class="col-md-6">
+                        <label for="exampleInputUsername1">University</label>
+                        <input type="text" class="form-control"    name="university" placeholder="Addis Abeba, AASTU" />
+                        @error("university")
+                                  <span class="text-danger">{{$message}}</span>
+                                @enderror
+                      </div>
+                             
+            
+                      <div class="col-md-6">
+                        <label for="exampleInputEmail1">Start Date</label>
+                        <input type="date" class="form-control" required name="start_date" value="" />
+                        @error("start_date")
+                            <span class="text-danger">{{$message}}</span>
+                          @enderror
+                      </div>
+                      <div class="col-md-6">
+                        <label for="exampleInputEmail1">End Date /if you are under study leave empty</label>
+                        <input type="date" class="form-control" required name="end_date" />
+                        @error("end_date")
+                            <span class="text-danger">{{$message}}</span>
+                          @enderror
+                      </div>
+                      
+                      
+                      </div>
+                      <button type="submit" class="btn btn-primary m-2"> Submit </button>
+                      </div>
+             
+                    
+    </form>
+    <hr>
+    <div class="table-responsive p-3">
+                      <table class="table">
+                       
+                         @if($education->count() > 0)
+                         <thead>
+                          <tr>
+                            <th>No</th>
+                            <th>Degree</th>
+                            
+                            <th>Field Of Study</th>
+                            <th>Start Date</th>
+                            <th>End Date</th>
+                            
+                           
+                            <th>Action</th>
+                          </tr>
+                        </thead>
+                        @php
+                                  $i=0;
+                             @endphp
+                             @foreach($education as $edu)
+                            
+                             <tbody>
+                          <tr>
+                            <td>{{++$i}}</td>
+                            <td>{{$edu->degree}}</td>
+                          
+                             <td>{{$edu->field_of_study}}</td>
+                            <td>{{$edu->start_date}}</td>
+                            <td>{{$edu->end_date}}</td>
+                            <td>
+
+                            <form action="{{route('delete.education')}}" method="post">
+                               @csrf
+                               <input type="hidden" name="id" value="{{$edu->id}}">
+                               <button class="btn btn-primary"><span class="mdi mdi-trash-can menu-icon fs-5"></span></button>
+                              
+                            </form>
+                            <td>   
+                          </tr>
+                        </tbody>
+
+                             @endforeach
+
+                         @endif
+                      </table>
+                    </div>
+    </div>
+  </div>
+  
+</div>
+        
+              </div>
+            
 @endsection

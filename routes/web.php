@@ -4,6 +4,8 @@ use App\Models\Job;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Jobseeker\ProfileController;
+use App\Http\Controllers\jobseeker\EducationController;
+use App\Http\Controllers\jobseeker\ExperinceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,11 +64,12 @@ Route::middleware('auth')->group(function () {
 
         Route::get("jobseeker/dashboard",function(){
             return view("jobseeker.dashboard");
-        });
+        })->name("jobseeker.dashboard");
 
         Route::get("my-profile",[ProfileController::class,"index"])->name("my-profile");
         Route::post("my-profile",[ProfileController::class,"editprofile"])->name("editprofile");
-
+        Route::post("experience",[EducationController::class,"store"])->name("jobseeker.experience");
+        Route::post("delete-education",[EducationController::class,"delete"])->name("delete.education");
 
     });
 });

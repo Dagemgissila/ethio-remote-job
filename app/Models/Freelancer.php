@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Education;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Freelancer extends Model
 {
@@ -17,5 +18,9 @@ class Freelancer extends Model
 
     public function freelancer_user(){
         return $this->belongsTo(User::class,"user_id");
+    }
+
+    public function education(){
+        return $this->hasMany(Education::class,"freelancer_id");
     }
 }

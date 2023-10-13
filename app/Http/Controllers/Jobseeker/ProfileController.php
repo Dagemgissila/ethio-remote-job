@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Jobseeker;
 
+use App\Models\Education;
 use App\Models\Freelancer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -11,8 +12,9 @@ class ProfileController extends Controller
 {
     public function index(){
         $profile=Freelancer::query()->where("user_id",auth()->user()->id)->first();
+        $education=Education::query()->where("freelancer_id",auth()->user()->freelancer->id)->orderBy("created_at","desc")->get();
 
-        return view("jobseeker.profile.profile",compact("profile"));
+        return view("jobseeker.profile.profile",compact("profile","education"));
     }
 
     public function editprofile(Request $request){
@@ -23,7 +25,7 @@ class ProfileController extends Controller
             "about_me"=>"required|string|max:1000",
             "profile_image" => "nullable|max:2048|mimes:jpg,png,jpeg,PNG,JPG,JPEG",
             "resume" => "nullable|max:1024|mimes:pdf",
-
+            "skills"=>"nullable|max:255"
         ]);
        
 
@@ -58,7 +60,8 @@ class ProfileController extends Controller
              "phone_number"=>$request->phone_number,
              "about_me"=>$request->about_me,
              "profile_image"=>$profilePath,
-             "resume"=>$resumePath
+             "resume"=>$resumePath,
+             "skills"=>$request->skills
         ]);
 
         return back()->with("success","profile updated successfully");
