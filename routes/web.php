@@ -3,8 +3,7 @@
 use App\Models\Job;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Jobs\JobsController;
+use App\Http\Controllers\Jobseeker\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,14 +24,16 @@ Route::get('/', function () {
 
 Route::get("jobs",[JobsController::class,"alljobs"])->name("alljobs");
 
+
 Route::get('/Terms-of-service-and-policies',function(){
     return view('policies');
 });
 
 Route::middleware('auth')->group(function () {
+    Route::get("job/{slug}",[JobsController::class,"jobdeatils"])->name("jobdetail");
     Route::group(['middleware' => ['role:startup']], function () {
         // Routes accessible only by users with the 'startup' role
-        Route::get('/startup/dashboard', function () {
+        Route::get('startup/dashboard', function () {
             return view('startup.dashboard');
         })->name('startup.dashboard');
 
@@ -41,21 +42,36 @@ Route::middleware('auth')->group(function () {
         Route::post("job/post",[JobsController::class,"store"])->name("startup.postjob");
 
     });
+
+
+
+    //company
+    Route::group(["middleware"=>["role:company"]],function(){
+            Route::get("company/dashboard",function(){
+                return view("company.dashboard");
+            })->name("company.dashboard");
+            Route::get("company/my-job",[JobsController::class,"index2"])->name("company.job");
+            Route::get("c-job/post",[JobsController::class,"companyPostJob"])->name("company.postjob");
+            Route::post("c-job/post",[JobsController::class,"store"])->name("company.postjob");
+    });
+
+
+    //jobseeker
+
+    Route::group(["middleware"=>["role:jobseeker"]],function(){
+
+        Route::get("jobseeker/dashboard",function(){
+            return view("jobseeker.dashboard");
+        });
+
+        Route::get("my-profile",[ProfileController::class,"index"])->name("my-profile");
+        Route::post("my-profile",[ProfileController::class,"editprofile"])->name("editprofile");
+
+
+    });
 });
 
-Route::group(['middleware' => ['role:company']], function () {
-    // Routes accessible only by users with the 'admin' role
-    Route::get("/company/dashboard",function(){
-        dd("me");
-    })->name("dashboard");
-});
 
-Route::group(['middleware' => ['role:company']], function () {
-    // Routes accessible only by users with the 'admin' role
-    Route::get("/me",function(){
-        dd("me");
-    })->name("dashboard");
-});
 
 
 

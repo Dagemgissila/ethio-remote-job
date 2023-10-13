@@ -70,7 +70,7 @@
                             </div>
                             <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
                                 <div class="d-flex mb-3">
-                                    <a class="btn btn-secondary" href="">View Detail</a>
+                                    <a class="btn btn-secondary" href="{{route('jobdetail',$job->slug)}}">View Detail</a>
                                 </div>
                                 <small class="text-truncate"><i class="far fa-calendar-alt text-secondary me-2"></i>Deadline: {{$job->deadline}}</small>
                             </div>
@@ -85,7 +85,7 @@
                     </div>
                 
 
-                 
+
                 </div>
 
                 

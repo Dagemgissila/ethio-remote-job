@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Auth;
 use App\Models\User;
 use App\Models\Company;
 use App\Models\Startup;
+use App\Models\Freelancer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterCompanyController extends Controller
 {
@@ -28,9 +30,9 @@ class RegisterCompanyController extends Controller
             'email' => ['required', 'string', 'email', 'max:255',"unique:".User::class],
             'phone_number' => ['required', 'string', 'min:10', 'max:13'],
             'city' => ['required', 'string', 'max:255'],
-            'linkdelin' => ['url', 'max:255'],
-            'facebook' => ['url', 'max:255'],
-            'telegram' => ['url', 'max:255'],
+            'linkdelin' => ['url', 'max:255',"nullable"],
+            'facebook' => ['url', 'max:255',"nullable"],
+            'telegram' => ['url', 'max:255',"nullable"],
             'tin_number' => ['required', 'string', 'max:255'],
             'license' => ['required', 'file', 'max:2048'],
             'password' => ['required', 'string', 'min:8', 'max:15', 'confirmed'],
@@ -141,5 +143,41 @@ class RegisterCompanyController extends Controller
 
     public function index3(){
         return view("auth.jobseeker");
+    }
+
+    public function JobSeekerregister(Request $request){
+        
+        $request->validate([
+            "firstname"=>["required","string","max:255"],
+            "lastname"=>["required","string","max:255"],
+            "email"=>["required","email","string","max:255","unique:".User::class],
+            "phone_number"=>["required","numeric","min:8"],
+            "password"=>["required","string","max:255","confirmed"],
+
+        ]);
+        
+
+        $user=new User;
+        $user->email=$request->email;
+        $user->password=$request->password;
+        $user->status=1;
+        $user->assignRole("jobseeker");
+        $user->save();
+
+        $freelance=new Freelancer;
+        $freelance->user_id=$user->id;
+        $freelance->firstname=$request->firstname;
+        $freelance->lastname=$request->lastname;
+        $freelance->phone_number=$request->phone_number;
+        $freelance->save();
+
+        Auth::user();
+        $request->session()->regenerate();
+
+        return  redirect()->route("my-profile")->with("message your register succesfully ,please complete your profile");
+        
+        
+
+
     }
 }

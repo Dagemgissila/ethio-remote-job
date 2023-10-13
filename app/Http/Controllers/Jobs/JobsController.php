@@ -17,14 +17,30 @@ class JobsController extends Controller
     
         return view("startup.job.index",compact("jobs"));
     }
-
+    
+    public function index2(){
+        $jobs=Job::query()->where("user_id",auth()->user()->id)->orderBy("created_at","desc")->get();
+  
+      return view("company.job.index",compact("jobs"));
+  }
     public function alljobs(){
         $jobs=Job::query()->where("status","!=",-1)->orderBy("created_at","desc")->limit(5)->get();
         return view("alljobs",compact("jobs"));
     }
 
     public function PostJob(){
+        
         return view("startup.job.postjob");
+    }
+
+    public function companyPostJob(){
+        return view("company.job.postjob");
+    }
+
+    public function jobdeatils($slug){
+        $job=Job::query()->where("slug",$slug)->first();
+       
+        return view("jobdetail",compact("job"));
     }
 
     public  function store(Request $request){
@@ -60,13 +76,18 @@ class JobsController extends Controller
              $job->deadline=$request->deadline;
              $job->status=1;
                   // Fetch the business name from the startup relation
-             $businessName = auth()->user()->startup->business_name;
+              if(auth()->user()->roles->pluck("name")->first() == "startup"){
+                $businessName = auth()->user()->startup->business_name;
+              }
+              elseif(auth()->user()->roles->pluck("name")->first() == "company"){
+                $businessName=auth()->user()->company->company_name;
+              }
           
              // Generate the slug using business name, job title, and posted day
              $slug = Str::slug($businessName . ' ' . $request->job_title . ' ' . now()->format('Y-m-d'));
              $job->slug = $slug;
              $job->save();
-             return redirect()->route("startup.job")->with("success","You Poste Job Successfully");
+             return redirect()->route("company.job")->with("success","You Poste Job Successfully");
 
     }
 }

@@ -1,4 +1,4 @@
-@extends("startup.layouts.app")
+@extends("jobseeker.layouts.app")
 @section("content")
 <h3 class="btn btn-primary text-white fs-5 p-2">dashboard</h3>
 <div class="bg-white p-4">

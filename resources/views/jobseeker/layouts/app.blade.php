@@ -113,25 +113,25 @@ color: #fff;
     color: #fff;
 }
     </style>
-    
+
   </head>
   <body>
     <div class="container-scroller">
 
-    @include(".manager.layouts.sidebar")
-    @include('manager.layouts.topnav')
+    @include("jobseeker.layouts.sidebar")
+    @include('jobseeker.layouts.topnav')
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper pb-0">
-            
+
           @yield("content")
-          
-          
-           
+
+
+
           </div>
           <!-- content-wrapper ends -->
           <!-- partial:partials/_footer.html -->
-        
+
           <!-- partial -->
         </div>
         <!-- main-panel ends -->
@@ -161,6 +161,9 @@ color: #fff;
     <!-- endinject -->
     <!-- Custom js for this page -->
     <script src="{{ asset('assets/js/dashboard.js') }}"></script>
+  
     <!-- End custom js for this page -->
   </body>
 </html>
+
+<

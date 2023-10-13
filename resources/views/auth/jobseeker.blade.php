@@ -11,7 +11,7 @@
                     {{ $errors->first('error') }}
                 </div>
                @endif
-                <form method="POST" action="{{route("register.start-up")}}">
+                <form method="POST" action="{{route('register.start-up')}}">
                     @csrf
                     <div class="row g-3 my-3">
                           @if($errors->has("error"))
@@ -27,7 +27,7 @@
                           @endif
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" value="{{old('firstname')}}"  name="firstname" >
+                                <input type="text" class="form-control" required value="{{old('firstname')}}"  name="firstname" >
                                 <label for=""> First Name</label>
                             </div>
                             <div>
@@ -39,7 +39,7 @@
 
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="text" class="form-control" value="{{old('lastname')}}"  name="lastname" >
+                                <input type="text" class="form-control" required value="{{old('lastname')}}"  name="lastname" >
                                 <label for=""> Last Name</label>
                             </div>
                             <div>
@@ -51,7 +51,7 @@
 
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="email" class="form-control" value="{{old('email')}}"  name="email">
+                                <input type="email" class="form-control" email value="{{old('email')}}"  name="email">
                                 <label for="email"> Email</label>
                             </div>
                             <div>
@@ -64,7 +64,7 @@
 
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="number" class="form-control" value="{{old('phone_number')}}"  name="phone_number">
+                                <input type="number" class="form-control" required value="{{old('phone_number')}}"  name="phone_number">
                                 <label for=""> Phone number</label>
                             </div>
                             <div>
@@ -76,8 +76,8 @@
 
                         <div class="col-6">
                             <div class="form-floating">
-                                <input type="password" name="password" value="{{old('password')}}"  class="form-control" >
-                                <label for="subject">Password</label>
+                                <input type="password" name="password" required value="{{old('password')}}"  class="form-control" >
+                                <label for="">Password</label>
                             </div>
                             @error("password")
                             <span class="text-danger">{{$message}}</span>
@@ -86,7 +86,7 @@
 
                         <div class="col-6">
                             <div class="form-floating">
-                                <input type="password" name="password_confirmation" value="{{old('password_confirmation')}}"  class="form-control" >
+                                <input type="password" name="password_confirmation" required value="{{old('password_confirmation')}}"  class="form-control" >
                                 <label for="">Confirm Password</label>
                             </div>
                             @error("password_confirmation")

@@ -6,6 +6,7 @@ namespace App\Models;
 use App\Models\Job;
 use App\Models\Company;
 use App\Models\Startup;
+use App\Models\Freelancer;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Notifications\Notifiable;
@@ -60,5 +61,9 @@ class User extends Authenticatable
 
     public function jobs(){
         return $this->hasMany(Job::class,"user_id");
+    }
+
+    public function freelancer(){
+        return $this->hasOne(Freelancer::class,"user_id");
     }
 }

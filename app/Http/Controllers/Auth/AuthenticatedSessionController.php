@@ -29,16 +29,19 @@ class AuthenticatedSessionController extends Controller
 
         $request->authenticate();
 
-        $request->session()->regenerate();
+      
 
         $user = Auth::user();
         $role=$user->roles->pluck("name")->first();
 
          if($role == "startup"){
+            $request->session()->regenerate();
             return redirect("/startup/dashboard");
          }
          else if($role == "company"){
-
+            $request->session()->regenerate();
+            return redirect("/company/dashboard");
+             
          }
 
          else if($role=="admin"){
@@ -46,7 +49,8 @@ class AuthenticatedSessionController extends Controller
          }
 
          else if($role == "jobseeker"){
-
+            $request->session()->regenerate();
+            return redirect("/jobseeker/dashboard");
          }
 
     }

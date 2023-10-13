@@ -28,6 +28,7 @@ Route::middleware('guest')->group(function () {
                 ->name("register.start-up");
 
  Route::get("register-job-seeker",[RegisterCompanyController::class,"index3"])->name("register.jobseeker");
+ Route::post("register-job-seeker",[RegisterCompanyController::class,"JobSeekerregister"])->name("register.start-up");
 
 
     Route::post('register', [RegisteredUserController::class, 'store']);

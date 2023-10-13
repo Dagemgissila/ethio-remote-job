@@ -1,4 +1,4 @@
-@extends("startup.layouts.app")
+@extends("company.layouts.app")
 @section("content")
 <div class="row">
               <div class="col-lg-12 grid-margin stretch-card">
@@ -6,7 +6,7 @@
                  
                   <div class="card-body">
                     <h4 class="card-title">
-                        <a  href="{{route('startup.postjob')}}"  class="btn btn-primary">Post Job</a>
+                        <a  href="{{route('company.postjob')}}"  class="btn btn-primary">Post Job</a>
                     </h4>
                     @if(session()->has("success"))
                       <div class="bg-success p-3 text-white ">

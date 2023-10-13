@@ -11,7 +11,7 @@ class Company extends Model
     use HasFactory;
 
     public function company_user(){
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,"user_id");
     }
 }
 

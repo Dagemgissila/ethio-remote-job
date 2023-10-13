@@ -15,7 +15,7 @@
                 <a href="about.html" class="nav-item nav-link">Freelancer</a>
 
                 @auth
-                <a href="{{Auth::user()->roles->pluck("name")->first()}}/dashboard" class="nav-item nav-link">Dashboard</a>
+                <a href="/{{Auth::user()->roles->pluck("name")->first()}}/dashboard" class="nav-item nav-link">Dashboard</a>
                @endauth
             </div>
         </div>
