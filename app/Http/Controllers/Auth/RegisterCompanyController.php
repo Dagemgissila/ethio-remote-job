@@ -80,7 +80,7 @@ class RegisterCompanyController extends Controller
 
             DB::commit();
 
-            return back()->with("message", "Company registration successful! Please wait for your account to be approved.
+            return redirect()->route('login')->with("message", "Company registration successful! Please wait for your account to be approved.
              We will notify you by email.");
          }
 

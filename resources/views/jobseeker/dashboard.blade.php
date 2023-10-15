@@ -11,7 +11,7 @@
                        <i class="mdi mdi-account"></i>
                     </div>
                     <div class="mb-4">
-                        <h5 class="card-title mb-0 text-white">Message</h5>
+                        <h5 class="card-title mb-0 text-white">Total Application</h5>
                     </div>
                     <div class="row align-items-center mb-2 d-flex">
                         <div class="col-8">
@@ -31,7 +31,7 @@
                         <i class="fas fa-dollar-sign"></i>
                     </div>
                     <div class="mb-4">
-                        <h5 class="card-title mb-0 text-white">Total Freelancer</h5>
+                        <h5 class="card-title mb-0 text-white">Message</h5>
                     </div>
                     <div class="row align-items-center mb-2 d-flex">
                         <div class="col-8">
@@ -51,7 +51,7 @@
                         <i class="fas fa-clipboard"></i>
                     </div>
                     <div class="mb-4">
-                        <h5 class="card-title mb-0 text-white">Total Posted Job</h5>
+                        <h5 class="card-title mb-0 text-white">Feedback</h5>
                     </div>
                     <div class="row align-items-center mb-2 d-flex">
                         <div class="col-8">
@@ -71,7 +71,7 @@
                         <i class="fas fa-ban"></i>
                     </div>
                     <div class="mb-4">
-                        <h5 class="card-title mb-0 text-white">Blocked Jobs</h5>
+                        <h5 class="card-title mb-0 text-white">Portfolio</h5>
                     </div>
                     <div class="row align-items-center mb-2 d-flex">
                         <div class="col-8">

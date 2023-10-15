@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Jobseeker;
 
 use App\Models\Education;
+use App\Models\Experience;
 use App\Models\Freelancer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -13,8 +14,8 @@ class ProfileController extends Controller
     public function index(){
         $profile=Freelancer::query()->where("user_id",auth()->user()->id)->first();
         $education=Education::query()->where("freelancer_id",auth()->user()->freelancer->id)->orderBy("created_at","desc")->get();
-
-        return view("jobseeker.profile.profile",compact("profile","education"));
+        $experience=Experience::query()->where("freelancer_id",auth()->user()->freelancer->id)->orderBy("created_at","desc")->get();
+        return view("jobseeker.profile.profile",compact("profile","education","experience"));
     }
 
     public function editprofile(Request $request){
@@ -22,17 +23,15 @@ class ProfileController extends Controller
             "firstname"=>"required|string|max:255",
             "lastname"=>"required|string|max:255",
             "phone_number"=>"required|string|numeric",
-            "about_me"=>"required|string|max:1000",
+            "about_me"=>"nullable|string|max:1000",
             "profile_image" => "nullable|max:2048|mimes:jpg,png,jpeg,PNG,JPG,JPEG",
             "resume" => "nullable|max:1024|mimes:pdf",
             "skills"=>"nullable|max:255"
         ]);
        
 
-        if($request->has("profile_image")){
-            if ($request->old_picture) {
-                Storage::delete('public/storage/' . $request->old_picture);
-            }
+        if($request->hasFile("profile_image")){
+          
             $profile=$request->file("profile_image");
              $profilePath=$profile->store("profileImage","public");
         }
@@ -43,7 +42,7 @@ class ProfileController extends Controller
 
       
 
-        if ($request->has("resume")) {
+        if ($request->hasFile("resume")) {
           
             $resume = $request->file("resume");
             $resumePath = $resume->store("Resume", "public");

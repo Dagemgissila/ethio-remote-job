@@ -13,7 +13,7 @@
                @endif
 
                @if (session()->has("message"))
-               <div class="bg-success text-white p-2">
+               <div class="alert alert-success ">
                    {{ session("message") }}
                </div>
            @endif
@@ -44,7 +44,7 @@
 
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="file" class="form-control" required value="{{old('company_logo')}}"  name="company_logo" i >
+                                <input type="file" class="form-control" accept=".jpg,.jpeg,.png" required value="{{old('company_logo')}}"  name="company_logo" i >
                                 <label for=""> Company Logo</label>
                             </div>
                             <div>
@@ -133,7 +133,7 @@
                         <hr>
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="website" class="form-control" value="{{old('linkdelin')}}"  name="linkdelin" >
+                                <input type="url" class="form-control" value="{{old('linkdelin')}}"  name="linkdelin" >
                                 <label for=""> LinkedIn profile</label>
                             </div>
                             <div>
@@ -145,7 +145,7 @@
 
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="website" class="form-control" value="{{old('telegram')}}"  name="telegram" >
+                                <input type="url" class="form-control" value="{{old('telegram')}}"  name="telegram" >
                                 <label for=""> Telegram channel/group</label>
                             </div>
                             <div>
@@ -157,7 +157,7 @@
 
                         <div class="col-md-6">
                             <div class="form-floating">
-                                <input type="website" class="form-control" value="{{old('facebook')}}"  name="facebook">
+                                <input type="url" class="form-control" value="{{old('facebook')}}"  name="facebook">
                                 <label for=""> Facebook page </label>
                             </div>
                             <div>
@@ -171,7 +171,7 @@
                        <hr>
                        <div class="col-md-6">
                         <div class="form-floating">
-                            <input type="text" class="form-control" value="{{old('tin_number')}}"  name="tin_number">
+                            <input type="text" class="form-control" required value="{{old('tin_number')}}"  name="tin_number">
                             <label for=""> Tax identification number/TIN </label>
                         </div>
                         <div>
@@ -183,7 +183,7 @@
 
                        <div class="col-md-6">
                         <div class="form-floating">
-                            <input type="file" class="form-control" value="{{old('license')}}"  name="license" >
+                            <input type="file" class="form-control" accept=".pdf" value="{{old('license')}}"  name="license" >
                             <label for=""> Trade license</label>
                         </div>
                         <div>

@@ -42,26 +42,35 @@
       </a>
     </li>
     
- 
+  
 
 
     <li class="nav-item">
       <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-        <i class="mdi mdi-account-settings menu-icon"></i>
+      <i class="mdi mdi-folder-outline menu-icon"></i>
+
         <span class="menu-title">Manage Portfolio</span>
         <i class="menu-arrow"></i>
       </a>
       <div class="collapse" id="ui-basic">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item">
-            <a class="nav-link" href="pages/ui-features/buttons.html">Add Portfolio</a>
+            <a class="nav-link" href="{{route('jobseeker.addportfolio')}}">Add Portfolio</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="pages/ui-features/dropdowns.html">My Portfolio </a>
+            <a class="nav-link" href="{{route('jobseeker.viewPortfolio')}}">My Portfolio </a>
           </li>
           
         </ul>
       </div>
+    </li>
+
+    <li class="nav-item">
+      <a class="nav-link" href="pages/forms/basic_elements.html">
+      <i class="mdi mdi-star-outline menu-icon"></i>
+
+        <span class="menu-title">FeedBack</span>
+      </a>
     </li>
   </ul>
 </nav>

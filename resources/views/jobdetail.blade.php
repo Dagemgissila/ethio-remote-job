@@ -1,4 +1,5 @@
 @extends("layouts.app")
+
 @section("content")
 
    <!-- Header End -->
@@ -39,6 +40,9 @@
                                 <h3 class="mb-1">{{$job->job_title}}</h3>
                                
                             </div>
+                            <div class="social-share-buttons">
+{!! $shareButton !!}
+    </div>
                         </div>
 
                         <div class="mb-5">
@@ -88,14 +92,14 @@
                     </div>
         
                     <div class="col-lg-4">
-                        <div class="bg-secondary text-white rounded p-5 mb-4 wow slideInUp" data-wow-delay="0.1s">
+                        <div class="alert alert-secondary text-dark shadow rounded p-4 mb-4 wow slideInUp" data-wow-delay="0.1s">
                             <h4 class="mb-4">Job Summery</h4>
-                            <p><i class="fa fa-angle-right text-white me-2"></i>Published On: {{$job->created_at}}</p>
-                            <p><i class="fa fa-angle-right text-white me-2"></i>Salary: {{$job->salary}}</p>
-                            
-                            <p class="m-0"><i class="fa fa-angle-right text-white me-2"></i>Date Line: {{$job->deadline}}</p>
+                            <p><i class="fas fa-calendar-alt text-secondary me-2"></i>Published At: {{$job->created_at}}</p>
+<p><i class="fas fa-money-bill-alt text-secondary me-2"></i>Salary: {{$job->salary}}</p>
+<p class="m-0"><i class="fas fa-clock text-secondary me-2"></i>Deadline: {{$job->deadline}}</p>
+
                         </div>
-                        <div class="bg-secondary text-white rounded p-5 wow slideInUp" data-wow-delay="0.1s">
+                        <div class="alert alert-secondary shadow text-dark rounded p-4 wow slideInUp" data-wow-delay="0.1s">
                             <h4 class="mb-4">Company Detail</h4>
                             <p class="m-0">
                          
@@ -117,8 +121,47 @@
 
 
                             </p>
+
                         </div>
+
+                      @if($job->UserJob)
+                         @if($job->UserJob->company)
+                                  @if($job->UserJob->company->linkdelin || $job->UserJob->company->facebook || $job->UserJob->telegtam)
+                                  <div class="alert alert-secondary shadow text-dark  rounded p-4 mt-4 wow slideInUp" data-wow-delay="0.1s">
+                            <h4 class="mb-4">Follow Us</h4>
+                            <div class="d-flex pt-2 gap-3">
+                                     @if($job->UserJob->company->linkdelin)
+                                     <a class="btn btn-outline-secondary btn-social" target="_blank" href="{{$job->UserJob->company->linkdelin}}"><i class="fab fa-linkedin-in"></i></a>
+                                     @endif
+
+                                     @if($job->UserJob->company->facebook)
+                                     <a class="btn btn-outline-secondary btn-social" target="_blank" href="{{$job->UserJob->company->facebook}}"><i class="fab fa-facebook-f"></i></a>
+                                     @endif
+
+                                     @if($job->UserJob->company->telegram)
+                                     <a class="btn btn-outline-secondary btn-social" target="_blank" href="{{$job->UserJob->company->telegram}}"><i class="fab fa-telegram"></i></a>
+                                     @endif
+                    
+                </div>
+                        </div>
+                                  @endif
+                                   
+                         @elseif($job->UserJob->startup)
+
+                         @else
+
+
+                         @endif
+
+
+
+                      @endif
+
+
+                        
                     </div>
+
+                    
                 </div>
             </div>
         </div>

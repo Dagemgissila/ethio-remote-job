@@ -4,10 +4,13 @@ namespace App\Http\Controllers\Jobs;
 
 use Carbon\Carbon;
 use App\Models\Job;
+use Jorenvh\Share\Share;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Validation\Rule;
+use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Redirect;
 
 
 class JobsController extends Controller
@@ -37,10 +40,19 @@ class JobsController extends Controller
         return view("company.job.postjob");
     }
 
-    public function jobdeatils($slug){
-        $job=Job::query()->where("slug",$slug)->first();
-       
-        return view("jobdetail",compact("job"));
+    public function jobdeatils($slug)
+    {
+        $job = Job::query()->where("slug", $slug)->first();
+        
+        $shareButton = \Share::currentPage(
+           "job Title : $job->job_title,description : $job->description" ,
+             
+        )
+            ->facebook()
+            ->telegram()
+            ->linkedin();
+    
+        return view("jobdetail", compact("job", "shareButton"));
     }
 
     public  function store(Request $request){
@@ -89,5 +101,17 @@ class JobsController extends Controller
              $job->save();
              return redirect()->route("company.job")->with("success","You Poste Job Successfully");
 
+    }
+
+
+    public function share($id)
+    {
+        $job = Job::findOrFail($id);
+
+        // Generate the URL for sharing the job post
+        $shareUrl = URL::route('job.show', ['id' => $job->id]);
+
+        // Redirect to the respective social media platform's share page
+        return Redirect::away($shareUrl);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Education;
+use App\Models\Portfolio;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -22,5 +23,9 @@ class Freelancer extends Model
 
     public function education(){
         return $this->hasMany(Education::class,"freelancer_id");
+    }
+
+    public function portfolio(){
+        return $this->hasMany(Portfolio::class,"freelancer_id");
     }
 }

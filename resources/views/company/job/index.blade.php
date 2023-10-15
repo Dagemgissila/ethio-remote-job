@@ -9,7 +9,7 @@
                         <a  href="{{route('company.postjob')}}"  class="btn btn-primary">Post Job</a>
                     </h4>
                     @if(session()->has("success"))
-                      <div class="bg-success p-3 text-white ">
+                      <div class="alert alert-success ">
                              {{session("success")}}
                       </div> 
                   @endif

@@ -11,34 +11,35 @@
         <li class="nav-item">
           <a class="nav-link" href="{{route('alljobs')}}">Jobs</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Freelancer</a>
-        </li>
+       
       </ul>
 
       </ul>
       <ul class="navbar-nav navbar-nav-right">
-        <li class="nav-item nav-profile dropdown d-none d-md-block">
+     
+        <li class="nav-item nav-profile dropdown ">
           <a class="nav-link dropdown-toggle p-3" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
             <div class="nav-profile-image">
-              <img src="{{asset('home/img/logo.jpg')}}" alt="Profile" class="rounded-circle" style="width: 30px; height: 30px;">
+              <img src="{{asset('storage/'.auth()->user()->freelancer->profile_image)}}" alt="Profile" class="rounded-circle" style="width: 40px; height: 40px;">
             </div>
-            Dagem Gissila
+            <span class="d-none d-md-block">{{auth()->user()->freelancer->firstname}}</span>
           </a>
           <div class="dropdown-menu center navbar-dropdown xm-2" aria-labelledby="profileDropdown">
             <a class="dropdown-item" href="#"><i class="bi bi-speedometer2"></i> Dashboard</a>
-            <a class="dropdown-item" href="#">
-                <form action="{{route("logout")}}" method="post">
+            
+                <form action="{{route('logout')}}" method="post">
                     @csrf
-                  <input type="submit" class="btn btn-primary" value="logout" id="">
+                 
+                  <a type="button" class="btn" class="dropdown-item">Logout</a>
                 </form>
-            </a>
+            
           </div>
         </li>
+    
       </ul>
-
       <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
         <span class="mdi mdi-menu"></span>
       </button>
+     
     </div>
   </nav>

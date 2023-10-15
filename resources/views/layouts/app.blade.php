@@ -29,7 +29,8 @@
 
     <!-- Template Stylesheet -->
     <link href="{{asset('home/css/style.css')}}" rel="stylesheet">
-  
+
+ 
 </head>
 
 <body>

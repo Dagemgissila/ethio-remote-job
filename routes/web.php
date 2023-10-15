@@ -3,9 +3,12 @@
 use App\Models\Job;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Jobs\JobsController;
+use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\Jobseeker\ProfileController;
 use App\Http\Controllers\jobseeker\EducationController;
 use App\Http\Controllers\jobseeker\ExperinceController;
+use App\Http\Controllers\jobseeker\PortfolioController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,6 +26,8 @@ Route::get('/', function () {
     $jobs=Job::query()->where("status","!=",-1)->orderBy("created_at","desc")->limit(5)->get();
     return view('home',compact("jobs"));
 });
+
+Route::get('/job/share/{id}', [JobsController::class,"share"])->name('job.share');
 
 Route::get("jobs",[JobsController::class,"alljobs"])->name("alljobs");
 
@@ -66,10 +71,20 @@ Route::middleware('auth')->group(function () {
             return view("jobseeker.dashboard");
         })->name("jobseeker.dashboard");
 
-        Route::get("my-profile",[ProfileController::class,"index"])->name("my-profile");
+       
+        Route::get("my-profile/education",[ProfileController::class,"index"])->name("my-profile");
+        Route::get("my-profile/experience",[ProfileController::class,"index"])->name("my-profile");
+        Route::get("my-profile/basic-profile",[ProfileController::class,"index"])->name("my-profile");
         Route::post("my-profile",[ProfileController::class,"editprofile"])->name("editprofile");
-        Route::post("experience",[EducationController::class,"store"])->name("jobseeker.experience");
+        Route::post("education",[EducationController::class,"store"])->name("jobseeker.education");
         Route::post("delete-education",[EducationController::class,"delete"])->name("delete.education");
+
+        Route::post("experience",[ExperienceController::class,"store"])->name("jobseeker.experience");
+        Route::post("delete-experience",[ExperienceController::class,"delete"])->name("delete.experience");
+        Route::get("add-portfolio",[PortfolioController::class,"index"])->name("jobseeker.addportfolio");
+        Route::post("add-portfolio",[PortfolioController::class,"store"])->name("jobseeker.addportfolio");
+        Route::get("my-portfolio",[PortfolioController::class,"viewPortfollio"])->name("jobseeker.viewPortfolio");
+        Route::post("delete-portfolio",[PortfolioController::class,"deletePortfolio"])->name("delete.portfolio");
 
     });
 });

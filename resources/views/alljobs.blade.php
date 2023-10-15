@@ -40,11 +40,12 @@
         <!-- Jobs Start -->
         <div class="container my-1 mb-4">
             <div class="row gap-4">
+            @if($jobs->count() > 0)
             <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Job Listing</h1>
                 <div class="col-lg-8 col-md-12 d-flex flex-column gap-3">
                
                   
-                         @if($jobs->count() > 0)
+                        
                              @foreach($jobs as $job)
                              <div class="job-item p-4 mb-1 wow fadeIn"  data-wow-delay="0.3s" >
                         <div class="row g-4 p-0 p-sm-3">
@@ -79,7 +80,7 @@
 
                              @endforeach
 
-                         @endif
+                       
                     <div class="w-100 d-flex justify-content-center">
                          <a href="" class="btn btn-secondary">Browse More job</a>
                     </div>
@@ -87,6 +88,13 @@
 
 
                 </div>
+
+                @else
+                <div class="col-8">
+                    <p>No job found</p>
+                </div>
+
+                @endif
 
                 
                 
