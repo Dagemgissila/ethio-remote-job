@@ -15,8 +15,12 @@ class Job extends Model
         return $this->belongsTo(User::class,"user_id");
     }
     public function getShortDescription()
-{
-    return Str::limit($this->description, 100);
-}
+    {
+        return Str::limit($this->description, 100);
+    }
+
+    public function jobaapplication(){
+        return $this->hasMany(jobApplication::class,"job_id");
+    }
 
 }

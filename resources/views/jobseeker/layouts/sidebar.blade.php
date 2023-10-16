@@ -22,7 +22,7 @@
     </li>
 
     <li class="nav-item">
-      <a class="nav-link" href="{{route('startup.job')}}">
+      <a class="nav-link" href="{{route('myApplication')}}">
         <i class="mdi mdi-account-group menu-icon"></i>
         <span class="menu-title">My Application</span>
       </a>

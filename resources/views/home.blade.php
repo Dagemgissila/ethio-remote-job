@@ -1,11 +1,13 @@
 @extends('layouts.app')
 @section('content')
-        
+
+
         <!-- Search Start -->
-        <div class="container-fluid bg-secondary mb-5 wow fadeIn" data-wow-delay="0.1s" style="padding: 35px;">
+           <!-- Header End -->
+           <div class="container-fluid bg-secondary mb-5 wow fadeIn" data-wow-delay="0.1s" style="padding: 35px;">
             <div class="container">
                 <div class="row g-2">
-                    <div class="col-md-10">
+                    <div class="col-md-6 mx-auto">
                         <div class="row g-2">
                             <div class="col-md-4">
                                 <input type="text" class="form-control border-0" placeholder="Keyword" />
@@ -18,19 +20,12 @@
                                     <option value="3">Category 3</option>
                                 </select>
                             </div>
-                            <div class="col-md-4">
-                                <select class="form-select border-0">
-                                    <option selected>Location</option>
-                                    <option value="1">Location 1</option>
-                                    <option value="2">Location 2</option>
-                                    <option value="3">Location 3</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-2">
+                            <div class="col-md-2">
                         <button class="btn btn-dark border-0 w-100">Search</button>
                     </div>
+                        </div>
+                    </div>
+                   
                 </div>
             </div>
         </div>
@@ -91,7 +86,7 @@
                             </div>
                             <div class="col-sm-12 col-md-4 d-flex flex-column align-items-start align-items-md-end justify-content-center">
                                 <div class="d-flex mb-3">
-                                    <a class="btn btn-secondary" href="{{route('jobdetail',$job->slug)}}">View Detail</a>
+                                <a class="btn btn-secondary" href="{{ route('jobdetail', ['slug' => $job->slug, 'id' => $job->id]) }}">View Detail</a>
                                 </div>
                                 <small class="text-truncate"><i class="far fa-calendar-alt text-secondary me-2"></i>Deadline: {{$job->deadline}}</small>
                             </div>

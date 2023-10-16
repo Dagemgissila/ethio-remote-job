@@ -1,10 +1,13 @@
 <?php
 
 use App\Models\Job;
+use App\Models\JobApplication;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Jobs\JobsController;
 use App\Http\Controllers\ExperienceController;
+use App\Http\Controllers\FreelancerController;
+use App\Http\Controllers\JobapplicationController;
 use App\Http\Controllers\Jobseeker\ProfileController;
 use App\Http\Controllers\jobseeker\EducationController;
 use App\Http\Controllers\jobseeker\ExperinceController;
@@ -36,8 +39,11 @@ Route::get('/Terms-of-service-and-policies',function(){
     return view('policies');
 });
 
+Route::get("freelancer",[FreelancerController::class,"index"])->name("freelancer");
+
 Route::middleware('auth')->group(function () {
-    Route::get("job/{slug}",[JobsController::class,"jobdeatils"])->name("jobdetail");
+    Route::get("job/{slug}/{id}",[JobsController::class,"jobdeatils"])->name("jobdetail");
+    Route::post("JobApplication",[JobsController::class,"jobapplication"])->name("job.JobApplication");
     Route::group(['middleware' => ['role:startup']], function () {
         // Routes accessible only by users with the 'startup' role
         Route::get('startup/dashboard', function () {
@@ -71,7 +77,8 @@ Route::middleware('auth')->group(function () {
             return view("jobseeker.dashboard");
         })->name("jobseeker.dashboard");
 
-       
+        Route::get("my-application",[JobapplicationController::class,"application"])->name("myApplication");
+        Route::post("delete-application/{jobid}/{app_id}",[JobapplicationController::class,"deleteApplication"])->name("delete.application");
         Route::get("my-profile/education",[ProfileController::class,"index"])->name("my-profile");
         Route::get("my-profile/experience",[ProfileController::class,"index"])->name("my-profile");
         Route::get("my-profile/basic-profile",[ProfileController::class,"index"])->name("my-profile");

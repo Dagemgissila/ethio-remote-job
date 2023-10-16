@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Models\Education;
 use App\Models\Portfolio;
+use App\Models\JobApplication;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -27,5 +28,9 @@ class Freelancer extends Model
 
     public function portfolio(){
         return $this->hasMany(Portfolio::class,"freelancer_id");
+    }
+
+    public function application(){
+        return $this->hasMany(JobApplication::class,"freelancer_id");
     }
 }

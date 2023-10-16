@@ -13,8 +13,18 @@
         </div>
         <!-- Header End -->
   <!-- Job Detail Start -->
-  <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
+  <div class="container-xxl py-2 wow fadeInUp" data-wow-delay="0.1s">
             <div class="container">
+                @if(session()->has("success"))
+                        <div class="alert alert-success p-4">
+                                  {{session("success")}}
+                        </div>
+                @endif
+                @if(session()->has("error"))
+                        <div class="alert alert-danger p-4">
+                                  {{session("error")}}
+                        </div>
+                @endif
                 <div class="row gy-5 gx-4">
                     <div class="col-lg-8">
                         <div class="d-flex align-items-center mb-5">
@@ -40,10 +50,9 @@
                                 <h3 class="mb-1">{{$job->job_title}}</h3>
                                
                             </div>
-                            <div class="social-share-buttons">
-{!! $shareButton !!}
-    </div>
+
                         </div>
+     
 
                         <div class="mb-5">
                             <h4 class="mb-3">Job description</h4>
@@ -59,36 +68,12 @@
                             </ul>
                           
                         </div>
+                        <div class="social-share-buttons d-flex align-items-center mb-1">
+                            <h3 class="">Share To</h3>
+{!! $shareButton !!}
+    </div>
         
-                          @if((auth()->user()->id) !== ($job->user_id))
-
-                          <div class="">
-                            <h4 class="mb-4">Apply For The Job</h4>
-                            <form>
-                                <div class="row g-3">
-                                    <div class="col-12 col-sm-6">
-                                        <input type="text" class="form-control" placeholder="Your Name">
-                                    </div>
-                                    <div class="col-12 col-sm-6">
-                                        <input type="email" class="form-control" placeholder="Your Email">
-                                    </div>
-                                    <div class="col-12 col-sm-6">
-                                        <input type="text" class="form-control" placeholder="Portfolio Website">
-                                    </div>
-                                    <div class="col-12 col-sm-6">
-                                        <input type="file" class="form-control bg-white">
-                                    </div>
-                                    <div class="col-12">
-                                        <textarea class="form-control" rows="5" placeholder="Coverletter"></textarea>
-                                    </div>
-                                    <div class="col-12">
-                                        <button class="btn btn-primary w-100" type="submit">Apply Now</button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-
-                          @endif
+                    
                     </div>
         
                     <div class="col-lg-4">
@@ -160,6 +145,33 @@
 
                         
                     </div>
+                    @if((auth()->user()->id) !== ($job->user_id))
+
+<div class="">
+  <h4 class="mb-4">Apply For The Job</h4>
+  
+      <div class="row g-3">
+         
+         <form action="{{route('job.JobApplication')}}" method="POST">
+          @csrf
+          <input type="hidden" name="job_id" value="{{$job->id}}">
+         <div class="col-12">
+              <textarea class="form-control" name="application"  rows="5" placeholder="Write Application Letter"></textarea>
+          </div>
+          <div class="p-2">
+      @error("application")
+        <span class="text-danger p-2">{{$message}}</span>
+      @enderror
+  </div>
+  <div class="col-4 m-2">
+  <button class="btn btn-secondary w-100 py-2" type="submit">Apply </button>
+</div>
+         </form>
+      </div>
+  
+</div>
+
+@endif
 
                     
                 </div>

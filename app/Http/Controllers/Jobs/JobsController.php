@@ -7,6 +7,7 @@ use App\Models\Job;
 use Jorenvh\Share\Share;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\JobApplication;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
@@ -40,19 +41,23 @@ class JobsController extends Controller
         return view("company.job.postjob");
     }
 
-    public function jobdeatils($slug)
+    public function jobdeatils($slug,$id)
     {
-        $job = Job::query()->where("slug", $slug)->first();
+        $job = Job::query()->where("slug", $slug)->where("id",$id)->first();
         
-        $shareButton = \Share::currentPage(
-           "job Title : $job->job_title,description : $job->description" ,
-             
-        )
-            ->facebook()
-            ->telegram()
-            ->linkedin();
-    
-        return view("jobdetail", compact("job", "shareButton"));
+         if($job){
+            $shareButton = \Share::currentPage(
+                "job Title : $job->job_title,description : $job->description" ,
+                  
+             )
+                 ->facebook()
+                 ->telegram()
+                 ->linkedin();
+         
+             return view("jobdetail", compact("job", "shareButton"));
+         }
+
+         abort(404);
     }
 
     public  function store(Request $request){
@@ -113,5 +118,28 @@ class JobsController extends Controller
 
         // Redirect to the respective social media platform's share page
         return Redirect::away($shareUrl);
+    }
+
+
+    public function jobapplication(Request $request){
+        
+         $this->validate($request,[
+            'application'=>"required|string|max:1000"
+         ]);
+
+         $job=JobApplication::query()->where("freelancer_id",auth()->user()->freelancer->id)
+              ->where("job_id",$request->job_id)->first();
+              if($job){
+                return back()->with("error","you already applied for this job");
+              }
+
+         JobApplication::create([
+             "freelancer_id"=>auth()->user()->freelancer->id,
+             "job_id"=>$request->job_id,
+             "description"=>$request->application
+         ]);
+
+         return back()->with("success","succesfully applied job");
+        
     }
 }
