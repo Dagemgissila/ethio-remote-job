@@ -35,11 +35,13 @@
         </div>
 
         @if($freelancers->count() > 0)
-                  @foreach($freelancers as $freelancer)
+                
                   <div class="card p-4">     
     <div class="row">
+    @foreach($freelancers as $freelancer)
         <div class="col-lg-3 col-md-4">
-            <div class="freelancer shadow p-4 ">
+              <a href="{{route('profile',['id'=>$freelancer->id,'firstname'=>$freelancer->firstname])}}">
+              <div class="freelancer shadow p-4 ">
                  <div class="d-flex align-items-center gap-3 mb-2">
                  <img src="https://images.unsplash.com/photo-1579353977828-2a4eab540b9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2FtcGxlfGVufDB8fDB8fHww&w=1000&q=80" alt="Profile Image" style="border-radius: 50%; width: 50px; height: 50px;">
                 <h6>{{$freelancer->firstname. " ". $freelancer->lastname}}</h6>
@@ -59,11 +61,13 @@
               
                 <p class="mt-2">{{$freelancer->about_me}}</p>
             </div>
+              </a>
         </div>
+        @endforeach
     </div>
 </div>
 
-                  @endforeach
+               
         @endif
 
 

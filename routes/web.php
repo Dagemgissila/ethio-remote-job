@@ -4,6 +4,7 @@ use App\Models\Job;
 use App\Models\JobApplication;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\JobseekerDashboard;
 use App\Http\Controllers\Jobs\JobsController;
 use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\FreelancerController;
@@ -37,9 +38,13 @@ Route::get("jobs",[JobsController::class,"alljobs"])->name("alljobs");
 
 Route::get('/Terms-of-service-and-policies',function(){
     return view('policies');
-});
+})->name('policies');
 
 Route::get("freelancer",[FreelancerController::class,"index"])->name("freelancer");
+Route::get("profile/{id}/{firstname}",[FreelancerController::class,"profile"])->name("profile");
+Route::get("FAQ",function(){
+    return view('faq');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get("job/{slug}/{id}",[JobsController::class,"jobdeatils"])->name("jobdetail");
@@ -73,9 +78,7 @@ Route::middleware('auth')->group(function () {
 
     Route::group(["middleware"=>["role:jobseeker"]],function(){
 
-        Route::get("jobseeker/dashboard",function(){
-            return view("jobseeker.dashboard");
-        })->name("jobseeker.dashboard");
+        Route::get("jobseeker/dashboard",[JobseekerDashboard::class,"index"])->name("jobseeker.dashboard");
 
         Route::get("my-application",[JobapplicationController::class,"application"])->name("myApplication");
         Route::post("delete-application/{jobid}/{app_id}",[JobapplicationController::class,"deleteApplication"])->name("delete.application");

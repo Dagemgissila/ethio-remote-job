@@ -4,11 +4,11 @@
         <div class="row g-5">
             <div class="col-lg-4 col-md-6">
                 <h5 class="text-white mb-4">Link</h5>
-                <a class="btn btn-link text-white-50" href="">Home</a>
-                <a class="btn btn-link text-white-50" href="">Jobs</a>
-                <a class="btn btn-link text-white-50" href="">Frelancer</a>
+                <a class="btn btn-link text-white-50" href="/">Home</a>
+                <a class="btn btn-link text-white-50" href="{{route('alljobs')}}">Jobs</a>
+                <a class="btn btn-link text-white-50" href="{{route('freelancer')}}">Frelancer</a>
                
-                <a class="btn btn-link text-white-50" href="">Terms of services and policies Condition</a>
+                <a class="btn btn-link text-white-50" href="{{route('policies')}}">Terms of services and policies Condition</a>
             </div>
            
             <div class="col-lg-4 col-md-6">

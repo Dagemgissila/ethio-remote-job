@@ -13,4 +13,10 @@ class FreelancerController extends Controller
         $freelancers=Freelancer::all();
         return view("freelancer.index",compact("freelancers"));
     }
+
+    public function profile($id,$firstname){
+        $freelancer=Freelancer::find($id);
+      
+        return view("freelancer.profile",compact("freelancer"));
+    }
 }

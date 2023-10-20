@@ -11,12 +11,12 @@
                        <i class="mdi mdi-account"></i>
                     </div>
                     <div class="mb-4">
-                        <h5 class="card-title mb-0 text-white">Total Application</h5>
+                        <h5 class="card-title mb-0 text-white">Total Job Application</h5>
                     </div>
                     <div class="row align-items-center mb-2 d-flex">
                         <div class="col-8">
                             <h2 class="d-flex align-items-center mb-0">
-                                50
+                            {{$Jobapplication}}
                             </h2>
                         </div>
                     </div>
@@ -28,7 +28,7 @@
             <div class="card l-bg-cyan-dark">
                 <div class="card-statistic-3 p-4">
                     <div class="card-icon card-icon-large">
-                        <i class="fas fa-dollar-sign"></i>
+                    <i class="mdi mdi-message"></i>
                     </div>
                     <div class="mb-4">
                         <h5 class="card-title mb-0 text-white">Message</h5>
@@ -48,7 +48,7 @@
             <div class="card l-bg-orange-dark">
                 <div class="card-statistic-3 p-4">
                     <div class="card-icon card-icon-large">
-                        <i class="fas fa-clipboard"></i>
+                    <i class="mdi mdi-comment-check-outline"></i>
                     </div>
                     <div class="mb-4">
                         <h5 class="card-title mb-0 text-white">Feedback</h5>
@@ -68,7 +68,7 @@
             <div class="card l-bg-red-dark">
                 <div class="card-statistic-3 p-4">
                     <div class="card-icon card-icon-large">
-                        <i class="fas fa-ban"></i>
+                    <i class="mdi mdi-folder-multiple"></i>
                     </div>
                     <div class="mb-4">
                         <h5 class="card-title mb-0 text-white">Portfolio</h5>
@@ -76,7 +76,7 @@
                     <div class="row align-items-center mb-2 d-flex">
                         <div class="col-8">
                             <h2 class="d-flex align-items-center mb-0">
-                                5
+                                {{$portfolio}}
                             </h2>
                         </div>
                     </div>

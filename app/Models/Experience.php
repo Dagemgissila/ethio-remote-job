@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Freelancer;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Experience extends Model
 {
@@ -17,4 +18,8 @@ class Experience extends Model
         "end_date",
         "description",
     ];
+
+    public function freelancer_exp(){
+        return $this->belongsTo(Freelancer::class,"freelancer_id");
+    }
 }

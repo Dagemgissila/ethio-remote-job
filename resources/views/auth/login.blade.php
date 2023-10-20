@@ -50,7 +50,7 @@
                     </div>
                 </form>
                 <div class="text-secondary">
-                    <a href="" class="text-secondary">Forget Password ?</a>
+                    <a href="{{route('password.request')}}" class="text-secondary">Forget Password ?</a>
                   
                 </div>
                 <div class="my-2">

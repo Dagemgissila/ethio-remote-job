@@ -49,10 +49,11 @@
 
                             </td>
                             <td>
-                              <a href="{{route('jobdetail',$job->slug)}}"  target="_blank" class="btn btn-info">Detail</a>
+                              <a href="{{route('jobdetail',['slug'=>$job->slug,'id'=>$job->id])}}"  target="_blank" class="btn btn-info">Detail</a>
                              <button class="btn btn-primary">Edit</button>
                              <button class="btn btn-danger">Delete</button>
-                             <button class="btn btn-warning">View Application</button>
+                             <a href="{{route('viewApplication',['slug'=>$job->slug,'id'=>$job->id])}}" class="btn btn-warning">View Application</a>
+                           
                             </td>
                           </tr>
                         </tbody>

@@ -1,8 +1,20 @@
 @extends('layouts.app')
 @section('content')
 
-
-        <!-- Search Start -->
+  <!-- Header End -->
+  <div class="container-fluid py-5 bg-dark page-header ">
+            <div class="container my-5 pt-5 pb-4">
+                <h1 class="display-3 text-white mb-3 animated slideInDown">Only Remote Jobs</h1>
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb text-white font-weight-bold">
+                        <li class="breadcrumb-item">The platform Which Directly connect Ethiopia Remote Job Owners With Remote Job Profesional for Free</li>
+                      
+                    </ol>
+                </nav>
+            </div>
+        </div>
+        <!-- Header End -->
+                <!-- Search Start -->
            <!-- Header End -->
            <div class="container-fluid bg-secondary mb-5 wow fadeIn" data-wow-delay="0.1s" style="padding: 35px;">
             <div class="container">
@@ -31,29 +43,46 @@
         </div>
         <!-- Search End -->
 
-         <!-- About Start -->
-         <div class="container-xxl py-5">
+         
+
+
+        <!-- About Start -->
+        <div class="container-xxl py-3">
             <div class="container">
                 <div class="row g-5 align-items-center">
-                  
-                    <div class="col-lg-12 wow fadeIn" data-wow-delay="0.5s">
-                        <h1>About Us</h1>
-                        
+                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.1s">
+                        <div class="row g-0 about-bg rounded overflow-hidden">
+                            <div class="col-6 text-start">
+                                <img class="img-fluid w-100" src="{{asset('home/img/aboutimage1.png')}}">
+                            </div>
+                            <div class="col-6 text-start">
+                                <img class="img-fluid" src="{{asset('home/img/aboutimage2.png')}}" style="width: 85%; margin-top: 15%;">
+                            </div>
+                            <div class="col-6 text-end">
+                                <img class="img-fluid" src="{{asset('home/img/aboutimage3.jpg')}}" style="width: 85%;">
+                            </div>
+                            <div class="col-6 text-end">
+                                <img class="img-fluid w-100" src="{{asset('home/img/aboutimage4.jpg')}}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 wow fadeIn" data-wow-delay="0.5s">
                         <h1 class="mb-4">We Help To Get The Best Remote Job And Find A Talented Employee</h1>
                         <p class="mb-4">Join our Vibrant community of exceptional remote job professional and visionary remote job owners.Together 
-                            , we will shater obstacles and pave the way for your awe-inspiring future.Embrace the extraordinary, and let us make a road obstacle settled for you
+                            , we will shater obstacles and pave the way for your awe-inspiring future.Embrace the extraordinary, and let us make a road obstacle settled for you</p>
 
-                        </p>
-
-                        <p class="mb-4">
-                            Wether your are a job owner or job seeker , Ethio Remote jobs is here to help you achieve your goals.
-                        </p>
-                       
+                        <a class="btn btn-secondary py-3 px-5 mt-3" href="{{route('register')}}">Register Here</a>
                     </div>
                 </div>
             </div>
         </div>
         <!-- About End -->
+
+
+
+
+
+
 
         <div class="container my-1">
             <div class="row gap-4">
@@ -97,7 +126,7 @@
 
                          @endif
                     <div class="w-100 d-flex justify-content-center">
-                         <a href="" class="btn btn-secondary">Browse More job</a>
+                         <a href="{{route('alljobs')}}" class="btn btn-secondary">Browse More job</a>
                     </div>
                 
 
@@ -130,49 +159,63 @@
             <div class="container">
                 <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Frequently Asked Questios</h1>
                 <div class="accordion bg-none " id="accordionExample">
-                    <div class="accordion-item bg-none">
-                      <h2 class="accordion-header bg-white"  id="headingOne">
-                        <button class="accordion-button me text-secondary bg-white "  type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                          Accordion Item #1
-                        </button>
-                      </h2>
-                      <div id="collapseOne" class="accordion-collapse bg-white collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                          <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                        </div>
-                      </div>
+                   
+ <!-- FAQ 1 -->
+ <div class="accordion-item bg-none">
+                <h2 class="accordion-header bg-white" id="headingOne">
+                    <button class="accordion-button me text-secondary bg-white collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        1. What is Ethio Remote Jobs?
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse bg-white collapse" aria-labelledby="headingOne"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        Ethio Remote Jobs is a platform dedicated to connecting Ethiopian professionals with remote job
+                        opportunities. We provide a wide range of services to both job seekers and employers in Ethiopia.
                     </div>
+                </div>
+            </div>
 
-                    <div class="accordion-item bg-none">
-                        <h2 class="accordion-header bg-white"  id="headingOne">
-                          <button class="accordion-button me text-secondary bg-white "  type="button" data-bs-toggle="collapse" data-bs-target="#collapsetwo" aria-expanded="true" aria-controls="collapseOne">
-                            Accordion Item #1
-                          </button>
-                        </h2>
-                        <div id="collapsetwo" class="accordion-collapse bg-white collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                          <div class="accordion-body">
-                            <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                          </div>
-                        </div>
-                      </div>
+            <!-- FAQ 2 -->
+            <div class="accordion-item bg-none">
+                <h2 class="accordion-header bg-white" id="headingTwo">
+                    <button class="accordion-button me text-secondary bg-white collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                        2. What types of jobs are posted on Ethio Remote Jobs?
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse bg-white collapse" aria-labelledby="headingTwo"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        On Ethio Remote Jobs, only remote job vacancies that can be done remotely are posted. This allows
+                        job seekers to find opportunities that offer flexibility and the ability to work from anywhere.
+                    </div>
+                </div>
+            </div>
 
+            <!-- FAQ 3 -->
+            <div class="accordion-item bg-none">
+                <h2 class="accordion-header bg-white" id="headingThree">
+                    <button class="accordion-button me text-secondary bg-white collapsed" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
+                        3. How can I find remote job opportunities on Ethio Remote Jobs?
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse bg-white collapse" aria-labelledby="headingThree"
+                    data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        To find remote job opportunities, simply join our Telegram channel by [insert instructions to join
+                        the channel]. We regularly post remote job openings from various industries and sectors. Stay tuned
+                        and browse through the job listings in the channel to find suitable positions.
+                    </div>
+                </div>
+            </div>
 
-                      <div class="accordion-item bg-none">
-                        <h2 class="accordion-header bg-white"  id="headingOne">
-                          <button class="accordion-button me text-secondary bg-white "  type="button" data-bs-toggle="collapse" data-bs-target="#collapse3" aria-expanded="true" aria-controls="collapseOne">
-                            Accordion Item #1
-                          </button>
-                        </h2>
-                        <div id="collapse3" class="accordion-collapse bg-white collapse " aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                          <div class="accordion-body">
-                            <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                          </div>
-                        </div>
-                      </div>
                   </div>
 
                   <div class="w-100 d-flex justify-content-center my-3">
-                    <a href="" class="btn btn-secondary">Browse More FAQ</a>
+                    <a href="/FAQ" class="btn btn-secondary">Browse More FAQ</a>
                </div>
 
             </div>
