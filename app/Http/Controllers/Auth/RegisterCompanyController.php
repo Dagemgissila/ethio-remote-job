@@ -14,10 +14,18 @@ use Illuminate\Support\Facades\Auth;
 class RegisterCompanyController extends Controller
 {
     public function index(){
+        $user=User::count();
+        if($user == 0){
+          return view('auth.adminregister');
+           }
         return view("auth.company");
     }
 
     public function index2(){
+        $user=User::count();
+        if($user == 0){
+          return view('auth.adminregister');
+           }
         return view('auth.start-up-register');
     }
 
@@ -25,7 +33,7 @@ class RegisterCompanyController extends Controller
         $request->validate([
             'company_name' => ['required', 'string', 'max:255'],
             'company_logo' => ['required', 'file', 'mimes:jpeg,jpg,png',"max:1024"],
-            'description' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:1200'],
             'fullname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255',"unique:".User::class],
             'phone_number' => ['required', 'string', 'min:10', 'max:13'],
@@ -91,14 +99,13 @@ class RegisterCompanyController extends Controller
     }
 
     public function startUpRegister(Request $request){
-
         $request->validate([
              "founder_name"=>["required","string","max:255"],
              "email"=>["required","email","string","max:255","unique:".User::class],
              "address"=>["required","string","max:255"],
              "phone_number"=>["required","string","max:13"],
              "business_name"=>["required","string","max:255"],
-             "description"=>["required","string"],
+             "description"=>["required","string","max:1200"],
              "linkdelin"=>["url","max:255","nullable"],
              "facebook"=>["max:255","url","nullable"],
              "telegram"=>["max:255","url","nullable"],
@@ -142,6 +149,10 @@ class RegisterCompanyController extends Controller
     }
 
     public function index3(){
+        $user=User::count();
+        if($user == 0){
+          return view('auth.adminregister');
+           }
         return view("auth.jobseeker");
     }
 

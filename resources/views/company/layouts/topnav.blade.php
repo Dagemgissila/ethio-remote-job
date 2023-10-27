@@ -6,13 +6,13 @@
       
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="#">Home</a>
+          <a class="nav-link" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Jobs</a>
+          <a class="nav-link" href="{{route('alljobs')}}">Jobs</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Freelancer</a>
+          <a class="nav-link" href="{{route('freelancer')}}">Freelancer</a>
         </li>
       </ul>
       
@@ -28,11 +28,11 @@
              {{auth()->user()->company->company_name}}
           </a>
           <div class="dropdown-menu center navbar-dropdown xm-2" aria-labelledby="profileDropdown">
-            <a class="dropdown-item" href="#"><i class="bi bi-speedometer2"></i> Dashboard</a>
+          
             <a class="dropdown-item" href="#">
                 <form action="{{route('logout')}}" method="post">
                     @csrf
-                  <input type="submit" class="btn btn-primary" value="logout" id="">
+                  <input type="submit" class="btn btn-primary  w-full" value="logout" id="">
                 </form>
             </a>
           </div>

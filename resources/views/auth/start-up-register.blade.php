@@ -11,7 +11,7 @@
                     {{ $errors->first('error') }}
                 </div>
                @endif
-                <form method="POST" action="{{route("register.start-up")}}">
+                <form method="POST" action="{{route('register.startup')}}">
                     @csrf
                     <div class="row g-3 my-3">
                           @if($errors->has("error"))
@@ -21,7 +21,7 @@
                           @endif
 
                           @if(session()->has("success"))
-                                <div class="bg-success p-2 text-white">
+                                <div class="alert alert-success" role="alert">
                                        {{session("success")}}
                                 </div>
                           @endif

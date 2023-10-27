@@ -11,6 +11,7 @@ use App\Models\JobApplication;
 use Illuminate\Validation\Rule;
 use Illuminate\Support\Facades\URL;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
 
@@ -141,5 +142,82 @@ class JobsController extends Controller
 
          return back()->with("success","succesfully applied job");
         
+    }
+
+    public function DeleteJob(Request $request){
+        $this->validate($request,[
+            'job_id'=>'required'
+        ]);
+        $job=Job::find($request->job_id);
+        $job->delete();
+        return back()->with("success","Deleted Succesfully");
+        
+    }
+
+    public function editJob($id)
+    {
+        $job = Job::find($id);
+
+        // Check if the job exists
+        if (!$job) {
+            return redirect()->back()->with('error', 'Job not found');
+        }
+
+        // Check if the authenticated user owns the job
+        if ($job->user_id !== Auth::user()->id) {
+            return redirect()->back()->with('error', 'You are not authorized to edit this job');
+        }
+
+        // Return the view for editing the job
+        return view('company.job.edit', compact('job'));
+    }
+    public function updateJob(Request $request, $id)
+    {
+        $job = Job::find($id);
+
+        // Check if the job exists
+        if (!$job) {
+            return redirect()->back()->with('error', 'Job not found');
+        }
+
+        // Check if the authenticated user owns the job
+        if ($job->user_id !== Auth::user()->id) {
+            return redirect()->back()->with('error', 'You are not authorized to update this job');
+        }
+
+        // Validate the request data
+        $request->validate([
+            "job_title"=>["required","string","max:255"],
+            "salary"=>["required","string","max:255"],
+            'deadline' => [
+              'required',
+              'string',
+              'date',
+              function ($attribute, $value, $fail) {
+                  $deadlineDate = Carbon::createFromFormat('Y-m-d', $value);
+                  $todayDate = Carbon::now();
+  
+                  if ($deadlineDate->isAfter($todayDate)) {
+                      return true;
+                  }
+  
+                  $fail('The deadline must be greater than today\'s date.');
+              },
+          ],
+            "description"=>["required","string","max:255"],
+            "requirement"=>["required","string","max:255"]
+       ]);
+
+        // Update the job with the new data
+       $job->update([
+    "job_title" => $request->job_title,
+    "salary" => $request->salary,
+    "deadline" => $request->deadline,
+    "description" => $request->description,
+    "requirement" => $request->requirement
+]);
+
+        // Redirect back to the job list with a success message
+        return redirect()->route('company.job')->with('success', 'Job updated successfully');
     }
 }

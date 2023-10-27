@@ -12,7 +12,7 @@ class Startup extends Model
 
     public function startup_user()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class,"user_id");
     }
 
     public function jobs(){

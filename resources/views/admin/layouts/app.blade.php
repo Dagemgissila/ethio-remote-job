@@ -118,8 +118,8 @@ color: #fff;
   <body>
     <div class="container-scroller">
 
-    @include(".manager.layouts.sidebar")
-    @include('manager.layouts.topnav')
+    @include(".admin.layouts.sidebar")
+    @include('admin.layouts.topnav')
         <!-- partial -->
         <div class="main-panel">
           <div class="content-wrapper pb-0">
@@ -161,6 +161,7 @@ color: #fff;
     <!-- endinject -->
     <!-- Custom js for this page -->
     <script src="{{ asset('assets/js/dashboard.js') }}"></script>
+    @yield("script")
     <!-- End custom js for this page -->
   </body>
 </html>

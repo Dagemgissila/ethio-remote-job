@@ -4,23 +4,17 @@
     <div class="row d-flex justify-content-center align-items-center" >
         <div class="col-md-6 my-5  p-5 bg-white">
             <div class="" >
-                <h2 class="my-4">Sign In</h2>
+                <h2 class="my-4">Admin Registration</h2>
                 <hr>
                 @if ($errors->has('error'))
                 <div class="alert alert-danger" role="alert">
                     {{ $errors->first('error') }}
                 </div>
                @endif
-
-               @if(session()->has("error"))
-               <div class="alert alert-danger" role="alert">
-                     {{session("error")}}
-                </div>
-               @endif
-                <form method="POST" action="{{ route('login') }}">
+                <form method="POST" action="{{ route('adminRegister') }}">
                     @csrf
                     <div class="row g-3 my-3">
-                        
+                    
                         <div class="col-md-12">
                             <div class="form-floating">
                                 <input type="email" class="form-control" value="{{old('email')}}"  name="email" id="email" placeholder="Your Email">
@@ -36,34 +30,30 @@
                         </div>
                         <div class="col-12">
                             <div class="form-floating">
-                                <input type="password" name="password" value="{{old('password')}}"  class="form-control" id="subject" placeholder="Subject">
-                                <label for="subject">Password</label>
+                                <input type="password" name="password"   class="form-control" id="subject" placeholder="password">
+                                <label for="">Password</label>
                             </div>
                             @error("password")
                             <span class="text-danger">{{$message}}</span>
                           @enderror
                         </div>
+
                         <div class="col-12">
-                            <div class="form-check">
-                                <input class="form-check-input blue-checkbox" type="checkbox" id="remember" name="remember" >
-                                <label class="form-check-label" for="remember">Remember me</label>
+                            <div class="form-floating">
+                                <input type="password" name="password_confirmation"  class="form-control" id="subject" placeholder="confirm password">
+                                <label for="">Confirm Password</label>
                             </div>
+                            @error("confirm_password")
+                            <span class="text-danger">{{$message}}</span>
+                          @enderror
                         </div>
-                        
+                       
                         <div class="col-4">
                             <button class="btn btn-secondary w-100 py-2" type="submit">Login</button>
                         </div>
                     </div>
                 </form>
-                <div class="text-secondary">
-                    <a href="{{route('password.request')}}" class="text-secondary">Forget Password ?</a>
-                  
-                </div>
-                <div class="my-2">
-                    <span>You dont have account yet?</span>
-                    <br>
-                    <a href="{{route('register')}}" class="text-secondary"> Register Here</a>
-                </div>
+              
             </div>
         </div>
     </div>

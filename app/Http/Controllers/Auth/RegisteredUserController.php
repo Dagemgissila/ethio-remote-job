@@ -20,6 +20,10 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
+        $user=User::count();
+        if($user == 0){
+          return view('auth.adminregister');
+           }
         return view('auth.register');
     }
 
@@ -47,5 +51,23 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         return redirect(RouteServiceProvider::HOME);
+    }
+
+    public function adminregister(Request $request){
+        $request->validate([
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:'.User::class],
+            'password' => ['required', 'confirmed', Rules\Password::defaults()],
+        ]);
+        
+        $user=new User;
+        $user->email=$request->email;
+        $user->password=Hash::make($request->password);
+        $user->assignRole("admin");
+        $user->status=1;
+        $user->save();
+
+        return redirect("/");
+       
+
     }
 }

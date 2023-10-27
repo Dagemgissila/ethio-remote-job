@@ -55,10 +55,10 @@
                 <form action="{{route('delete.application',['jobid'=>$jobapp->job_id,'app_id'=>$jobapp->freelancer_id])}}" method="post">
                                @csrf
                                <input type="hidden" name="id" value="">
-                               <button class="btn btn-danger"><span class="mdi mdi-trash-can menu-icon fs-5"></span></button>
+                               <button class="btn btn-danger"><span class="mdi mdi-trash-can menu-icon fs-5"></span>Delete </button>
                               
                      </form>
-                     <a class="btn btn-primary" target="_blank" href="{{ route('jobdetail', ['slug' => $jobapp->job->slug, 'id' => $jobapp->job->id]) }}"><span class="mdi mdi-eye menu-icon fs-5"></span></a>
+                     <a class="btn btn-primary" target="_blank" href="{{ route('jobdetail', ['slug' => $jobapp->job->slug, 'id' => $jobapp->job->id]) }}"><span class="mdi mdi-eye menu-icon fs-5"></span>View Job</a>
 
                     
                 </div>

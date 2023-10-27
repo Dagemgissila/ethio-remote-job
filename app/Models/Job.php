@@ -11,6 +11,14 @@ class Job extends Model
 {
     use HasFactory;
 
+    protected $fillable=[
+        "job_title",
+        "salary",
+        "deadline",
+        "description",
+        "requirement"
+    ];
+
     public function UserJob(){
         return $this->belongsTo(User::class,"user_id");
     }

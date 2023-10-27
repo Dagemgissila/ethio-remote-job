@@ -10,18 +10,19 @@
             <p>Job Seeker</p>
             </a>
         </div>
+        <div class="col-lg-2 text-center bg-secondary ">
+            <a href="{{route('register.startup')}}" class="text-dark p-2">
+                <span><i class="fas fa-rocket fa-2x my-3"></i></span>
+            <p>Start Up</p>
+            </a>
+        </div>
         <div class="col-lg-2 text-center bg-secondary">
             <a href="{{route('register.licenced')}}" class="text-dark p-2">
                 <span><i class="fas fa-building fa-2x my-3"></i></span>
             <p>Licensed Company</p>
             </a>
         </div>
-        <div class="col-lg-2 text-center bg-secondary ">
-            <a href="{{route('register.start-up')}}" class="text-dark p-2">
-                <span><i class="fas fa-rocket fa-2x my-3"></i></span>
-            <p>Start Up</p>
-            </a>
-        </div>
+
     </div>
 </div>
 

@@ -1,4 +1,4 @@
-@extends("manager.layouts.app")
+@extends("admin.layouts.app")
 @section("content")
 <h3 class="btn btn-primary text-white fs-5 p-2">dashboard</h3>
 <div class="bg-white p-4">
@@ -10,12 +10,12 @@
                         <i class="mdi mdi-account"></i>
                     </div>
                     <div class="mb-4">
-                        <h5 class="card-title mb-0 text-white">Total Company</h5>
+                        <h5 class="card-title mb-0 text-white">Total Employer</h5>
                     </div>
                     <div class="row align-items-center mb-2 d-flex">
                         <div class="col-8">
                             <h2 class="d-flex align-items-center mb-0">
-                                100
+                                 {{$company + $startup}}
                             </h2>
                         </div>
                     </div>
@@ -34,7 +34,7 @@
                     <div class="row align-items-center mb-2 d-flex">
                         <div class="col-8">
                             <h2 class="d-flex align-items-center mb-0">
-                                50
+                                {{$company}}
                             </h2>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                     <div class="row align-items-center mb-2 d-flex">
                         <div class="col-8">
                             <h2 class="d-flex align-items-center mb-0">
-                                50
+                                {{$startup}}
                             </h2>
                         </div>
                     </div>
@@ -72,7 +72,7 @@
                     <div class="row align-items-center mb-2 d-flex">
                         <div class="col-8">
                             <h2 class="d-flex align-items-center mb-0">
-                                300
+                                {{$freelancer}}
                             </h2>
                         </div>
                     </div>
@@ -92,7 +92,7 @@
                     <div class="row align-items-center mb-2 d-flex">
                         <div class="col-8">
                             <h2 class="d-flex align-items-center mb-0">
-                                200
+                                {{$jobs}}
                             </h2>
                         </div>
                     </div>

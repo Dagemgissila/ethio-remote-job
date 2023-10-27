@@ -108,7 +108,7 @@
                         <label for="exampleInputConfirmPassword1">Skill</label>
                         <input type="text" class="form-control" name="skills" value="{{$profile->skills}}"  placeholder="skills" />
                       </div>
-                      <button type="submit" class="btn btn-primary me-2"> Submit </button>
+                      <button type="submit" class="btn btn-primary me-2"> Update </button>
                     </form>
                   </div>
                 </div>
@@ -209,7 +209,7 @@
                             <form action="{{route('delete.education')}}" method="post">
                                @csrf
                                <input type="hidden" name="id" value="{{$edu->id}}">
-                               <button class="btn btn-primary"><span class="mdi mdi-trash-can menu-icon fs-5"></span></button>
+                               <button class="btn btn-danger"><span class="mdi mdi-trash-can menu-icon fs-5"></span></button>
                               
                             </form>
                             <td>   
@@ -322,7 +322,7 @@
                             <form action="{{route('delete.experience')}}" method="post">
                                @csrf
                                <input type="hidden" name="id" value="{{$exp->id}}">
-                               <button class="btn btn-primary"><span class="mdi mdi-trash-can menu-icon fs-5"></span></button>
+                               <button class="btn btn-danger"><span class="mdi mdi-trash-can menu-icon fs-5"></span></button>
                               
                             </form>
                             <td>   

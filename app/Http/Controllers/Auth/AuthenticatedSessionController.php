@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\LoginRequest;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
+use App\Providers\RouteServiceProvider;
+use App\Http\Requests\Auth\LoginRequest;
+use Illuminate\Support\Facades\Redirect;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -18,6 +20,10 @@ class AuthenticatedSessionController extends Controller
     public function create(): View
     {
 
+        $user=User::count();
+        if($user == 0){
+          return view('auth.adminregister');
+           }
         return view('auth.login');
     }
 
@@ -33,19 +39,28 @@ class AuthenticatedSessionController extends Controller
 
         $user = Auth::user();
         $role=$user->roles->pluck("name")->first();
+        if($user->status==-1){
+            Auth::guard('web')->logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+            return  Redirect()->route("login")->with("error","Your Account is Not Approved Yet .Please contact admin");
+           
+         }
 
          if($role == "startup"){
             $request->session()->regenerate();
             return redirect("/startup/dashboard");
          }
          else if($role == "company"){
+            
             $request->session()->regenerate();
             return redirect("/company/dashboard");
              
          }
 
          else if($role=="admin"){
-
+             $request->session()->regenerate();
+             return redirect("/admin/dashboard");
          }
 
          else if($role == "jobseeker"){

@@ -70,8 +70,9 @@
                         <h1 class="mb-4">We Help To Get The Best Remote Job And Find A Talented Employee</h1>
                         <p class="mb-4">Join our Vibrant community of exceptional remote job professional and visionary remote job owners.Together 
                             , we will shater obstacles and pave the way for your awe-inspiring future.Embrace the extraordinary, and let us make a road obstacle settled for you</p>
-
+               @guest
                         <a class="btn btn-secondary py-3 px-5 mt-3" href="{{route('register')}}">Register Here</a>
+                @endguest
                     </div>
                 </div>
             </div>
@@ -139,14 +140,19 @@
                 <div class="col-lg-3 col-md-12">
                     <div class="">
                         <h2 class="mb-3">Find By Category</h2>
+                       
                         <div class="d-flex flex-column category">
-                           <a href="index.html" class="d-flex justify-content-between px-2 ">Sales and Marketing  <span>23</span></a>
-                           <hr> 
-                           <a href="index.html" class="d-flex justify-content-between px-2 ">Information Technology  <span>43</span></a> 
-                           <hr>
-                           <a href="index.html" class="d-flex justify-content-between px-2 ">Content Creater  <span>13</span></a> 
-                           
+                        @if($categories->count() > 0)
+                               @foreach($categories as $category)
+                             
+                               <a href="" class="d-flex justify-content-between px-2 ">{{$category->name}}  <span>{{$category->count()}}</span></a> 
+                               @endforeach
+                        
+                        @else
+                          <p>no category is found</p>
+                        @endif
                         </div>
+                       
                  
                     </div>
                 </div>

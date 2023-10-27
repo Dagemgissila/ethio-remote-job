@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\AdminCompanyController;
 use App\Models\Job;
+use App\Models\User;
 use App\Models\JobApplication;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -10,9 +12,14 @@ use App\Http\Controllers\ExperienceController;
 use App\Http\Controllers\FreelancerController;
 use App\Http\Controllers\JobapplicationController;
 use App\Http\Controllers\Jobseeker\ProfileController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\jobseeker\EducationController;
 use App\Http\Controllers\jobseeker\ExperinceController;
 use App\Http\Controllers\jobseeker\PortfolioController;
+use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\StartupController;
+use App\Models\Category;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,14 +34,22 @@ use App\Http\Controllers\jobseeker\PortfolioController;
 
 
 Route::get('/', function () {
-    $jobs=Job::query()->where("status","!=",-1)->orderBy("created_at","desc")->limit(5)->get();
-    return view('home',compact("jobs"));
+    $user=User::count();
+     if($user == 0){
+       return view('auth.adminregister');
+        }
+        else{
+          $jobs=Job::query()->where("status","!=",-1)->orderBy("created_at","desc")->limit(5)->get();
+          $categories=Category::query()->orderBy("created_at","desc")->get();
+    return view('home',compact("jobs","categories"));
+        }
+    
 });
 
 Route::get('/job/share/{id}', [JobsController::class,"share"])->name('job.share');
 
 Route::get("jobs",[JobsController::class,"alljobs"])->name("alljobs");
-
+Route::post("adminRegister",[RegisteredUserController::class,"adminregister"])->name("adminRegister");
 
 Route::get('/Terms-of-service-and-policies',function(){
     return view('policies');
@@ -61,6 +76,20 @@ Route::middleware('auth')->group(function () {
 
     });
 
+    //route accesible only by admin
+    Route::group(["middleware"=>["role:admin"]],function(){
+           Route::get('admin/dashboard',[AdminDashboardController::class,"index"])->name("admin.dashboard");
+           Route::get("category",[CategoryController::class,"index"])->name("admin.category");
+           Route::post("category",[CategoryController::class,"addcategory"])->name("admin.addCategory");
+           Route::get("companys",[AdminCompanyController::class,"index"])->name("admin.company");
+           Route::get('/company-detail/{id}/{name}',[AdminCompanyController::class,"companyDetail"])->name("admin.companydetail");
+           Route::get("startup-detail/{id}/{name}",[StartupController::class,"startupDetail"])->name("admin.startupDetail");
+           Route::post("approve-company",[AdminCompanyController::class,"ApproveCompany"])->name("admin.ApproveCompany");
+           Route::post("delete-company",[AdminCompanyController::class,"deleteCompany"])->name("admin.deleteCompany");
+           Route::post("restrict-acccount",[AdminCompanyController::class,"restrictCompany"])->name("admin.RestrictCompany");
+           Route::get("startUp",[StartupController::class,"index"])->name("admin.startUp");
+    });
+
 
 
     //company
@@ -71,6 +100,10 @@ Route::middleware('auth')->group(function () {
             Route::get("company/my-job",[JobsController::class,"index2"])->name("company.job");
             Route::get("c-job/post",[JobsController::class,"companyPostJob"])->name("company.postjob");
             Route::post("c-job/post",[JobsController::class,"store"])->name("company.postjob");
+            Route::post('/companyDeleteJob',[JobsController::class,'DeleteJob'])->name('companyDeleteJob');
+            Route::get('/jobs/{id}/edit', [JobsController::class, 'editJob'])->name('editJob');
+          Route::post('/jobs/{id}/update', [JobsController::class, 'updateJob'])->name('updateJob');
+
     });
 
 

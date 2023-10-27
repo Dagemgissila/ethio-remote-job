@@ -15,22 +15,25 @@
       @auth
          @if(auth()->user()->roles()->pluck("name")->first() == "jobseeker")
          
-      <div class="nav-item dropdown  d-md-flex align-items-center justify-content-center">
-        
-      <img src="{{asset('storage/'.auth()->user()->freelancer->profile_image)}}" alt="Profile" class="rounded-circle d-none d-md-block" style="width: 50px; height: 50px;">
+         <div class="nav-item dropdown d-md-flex align-items-center justify-content-center">
+   
+        <img src="{{ auth()->user()->freelancer->profile_image ? asset('storage/' . auth()->user()->freelancer->profile_image) : asset('storage/profileImage/avater.jpg') }}" alt="Profile" class="rounded-circle" style="width: 40px; height: 40px;">
+    <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+        {{ auth()->user()->freelancer->firstname . " " .  auth()->user()->freelancer->lastname ?? '' }}
+    </a>
+    <div class="dropdown-menu rounded-0 m-0">
+        <a class="dropdown-item" href="/{{ Auth::user()->roles->pluck('name')->first() }}/dashboard">
+            <i class="bi bi-speedometer2"></i> Dashboard
+        </a>
+        <a href="job-detail.html" class="dropdown-item">
+            <form action="{{ route('logout') }}" method="post">
+                @csrf
+                <button>logout</button>
+            </form>
+        </a>
+    </div>
+</div>
 
-                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-                        {{auth()->user()->freelancer->firstname}}</a>
-                        <div class="dropdown-menu rounded-0 m-0">
-                        <a class="dropdown-item" href="/{{Auth::user()->roles->pluck('name')->first()}}/dashboard"><i class="bi bi-speedometer2"></i> Dashboard</a>
-                            <a href="job-detail.html" class="dropdown-item">
-                            <form action="{{route('logout')}}" method="post">
-        @csrf
-       <button>logout</button>
-      </form>
-                            </a>
-                        </div>
-                    </div>
           
                     @elseif(auth()->user()->roles()->pluck("name")->first() == "company")
                     <div class="nav-item dropdown  d-md-flex align-items-center justify-content-center">
@@ -42,7 +45,24 @@
                             <a href="job-detail.html" class="dropdown-item">
                             <form action="{{route('logout')}}" method="post">
         @csrf
-       <button>logout</button>
+       <button class="btn btn-secondary d-block">logout</button>
+      </form>
+                            </a>
+                        </div>
+                    </div>
+                 
+                    
+                    @elseif(auth()->user()->roles()->pluck("name")->first() == "admin")
+                    <div class="nav-item dropdown  d-md-flex align-items-center justify-content-center">
+
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                        {{auth()->user()->email}}</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                        <a class="dropdown-item" href="/{{Auth::user()->roles->pluck('name')->first()}}/dashboard"><i class="bi bi-speedometer2"></i> Dashboard</a>
+                            <a href="job-detail.html" class="dropdown-item">
+                            <form action="{{route('logout')}}" method="post">
+        @csrf
+       <button class="btn btn-secondary d-block">logout</button>
       </form>
                             </a>
                         </div>

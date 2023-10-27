@@ -19,20 +19,20 @@
      
         <li class="nav-item nav-profile dropdown ">
           <a class="nav-link dropdown-toggle p-3" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-            <div class="nav-profile-image">
-              <img src="{{asset('storage/'.auth()->user()->freelancer->profile_image)}}" alt="Profile" class="rounded-circle" style="width: 40px; height: 40px;">
-            </div>
-            <span class="d-none d-md-block">{{auth()->user()->freelancer->firstname}}</span>
+          <div class="nav-profile-image">
+          <img src="{{ auth()->user()->freelancer->profile_image ? asset('storage/' . auth()->user()->freelancer->profile_image) : asset('storage/profileImage/avater.jpg') }}" alt="Profile" class="rounded-circle" style="width: 40px; height: 40px;">
+</div>
+
+            <span class="d-none d-md-block">{{auth()->user()->freelancer->firstname . " ".auth()->user()->freelancer->lastname }}</span>
           </a>
           <div class="dropdown-menu center navbar-dropdown xm-2" aria-labelledby="profileDropdown">
-            <a class="dropdown-item" href="#"><i class="bi bi-speedometer2"></i> Dashboard</a>
-            
+          
+            <a class="dropdown-item" href="#">
                 <form action="{{route('logout')}}" method="post">
                     @csrf
-                 
-                  <a type="button" class="btn" class="dropdown-item">Logout</a>
+                  <input type="submit" class="btn btn-primary  w-full" value="logout" id="">
                 </form>
-            
+            </a>
           </div>
         </li>
     

@@ -18,11 +18,7 @@
                </div>
            @endif
 
-           @if (session()->has("error"))
-           <div class="bg-success text-white p-2">
-               {{ session("error") }}
-           </div>
-       @endif
+        
                 <form method="POST" action="{{ route('register.licenced') }}" enctype="multipart/form-data">
                     @csrf
                     <div class="row g-3 my-3">

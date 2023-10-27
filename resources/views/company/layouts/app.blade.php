@@ -20,6 +20,11 @@
     <link rel="stylesheet" href="{{ asset('assets/css/demo_1/style.css') }}" />
     <!-- End layout styles -->
     <link rel="shortcut icon" href="{{ asset('home/img/logo.jpg') }}" />
+
+  
+ 
+   
+
     <style>
     .card {
     background-color: #fff;
@@ -112,6 +117,7 @@ color: #fff;
     background: linear-gradient(135deg, #289cf5, #84c0ec) !important;
     color: #fff;
 }
+
     </style>
     
   </head>
@@ -162,5 +168,16 @@ color: #fff;
     <!-- Custom js for this page -->
     <script src="{{ asset('assets/js/dashboard.js') }}"></script>
     <!-- End custom js for this page -->
+
+    <script>
+          $(document).ready(function(){
+              $('#example').DataTable();
+          });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap4.min.js"></script>
+     @yield('script')
   </body>
 </html>
