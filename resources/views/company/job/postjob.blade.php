@@ -13,7 +13,7 @@
                 <form method="POST" action="{{ route('company.postjob') }}">
                     @csrf
                     <div class="row g-3 my-1">
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="form-floating">
                                 <input type="text" class="form-control" value="{{old('job_title')}}"  name="job_title">
                                 <label for="">Job Title</label>
@@ -25,7 +25,7 @@
                             </div>
                           
                         </div>
-                        <div class="col-4">
+                        <div class="col-6">
                             <div class="form-floating">
                                 <input type="text" name="salary" value="{{old('salary')}}"  class="form-control">
                                 <label for="">Salary</label>
@@ -35,7 +35,7 @@
                           @enderror
                         </div>
 
-                        <div class="col-4">
+                        <div class="col-6">
                             <div class="form-floating">
                                 <input type="date" name="deadline" value="{{old('deadline')}}"  class="form-control">
                                 <label for="">Deadline</label>
@@ -44,6 +44,22 @@
                             <span class="text-danger">{{$message}}</span>
                           @enderror
                         </div>
+
+                        <div class="col-6">
+    <div class="form-floating">
+        <select name="category" class="form-select" name="category" required>
+            <option value="">Select a category</option>
+            @foreach($categories as $category)
+                <option value="{{ $category->id }}">{{ $category->name }}</option>
+            @endforeach
+        </select>
+        <label for="category">Category</label>
+    </div>
+    @error("category")
+    <span class="text-danger">{{ $message }}</span>
+    @enderror
+</div>
+
 
                         <div class="col-12">
                             <div class="form-floating">

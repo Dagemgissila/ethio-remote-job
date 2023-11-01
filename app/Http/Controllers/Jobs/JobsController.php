@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Jobs;
 
 use Carbon\Carbon;
 use App\Models\Job;
+use App\Models\Category;
 use Jorenvh\Share\Share;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -28,23 +29,51 @@ class JobsController extends Controller
   
       return view("company.job.index",compact("jobs"));
   }
-    public function alljobs(){
-        $jobs=Job::query()->where("status","!=",-1)->orderBy("created_at","desc")->limit(5)->get();
-        return view("alljobs",compact("jobs"));
-    }
+  public function alljobs()
+{
+  
+        if (Auth::user() && auth()->user()->roles()->pluck("name")->first() == "admin") {
+            $jobs = Job::query()
+                ->orderBy("created_at", "desc")
+                ->limit(5)
+                ->get();
+        } else {
+            $jobs = Job::query()
+                ->where("status", 1)
+                ->orderBy("created_at", "desc")
+                ->limit(5)
+                ->get();
+        }
+    
+        $categories = Category::query()
+            ->orderBy("created_at", "desc")
+            ->get();
+    
+        return view("alljobs", compact("jobs", "categories"));
+ 
+    
+}
+
 
     public function PostJob(){
+        $categories=Category::query()->orderBy("created_at","desc")->get();
         
-        return view("startup.job.postjob");
+        return view("startup.job.postjob",compact("categories"));
     }
 
     public function companyPostJob(){
-        return view("company.job.postjob");
+        $categories=Category::query()->orderBy("created_at","desc")->get();
+        return view("company.job.postjob",compact("categories"));
     }
 
     public function jobdeatils($slug,$id)
     {
-        $job = Job::query()->where("slug", $slug)->where("id",$id)->first();
+        if (auth()->user()->roles()->pluck("name")->first() == "admin") {
+            $job = Job::query()->where("slug", $slug)->where("id",$id)->first();
+        } else {
+            $job = Job::query()->where("slug", $slug)->where("status",1)->where("id",$id)->first();
+        }
+   
         
          if($job){
             $shareButton = \Share::currentPage(
@@ -81,12 +110,14 @@ class JobsController extends Controller
                     },
                 ],
                   "description"=>["required","string","max:255"],
-                  "requirement"=>["required","string","max:255"]
+                  "requirement"=>["required","string","max:255"],
+                  "category"=>["required","string"],
              ]);
              
 
              $job=new Job;
              $job->user_id=auth()->user()->id;
+             $job->category_id=$request->category;
              $job->job_title=$request->job_title;
              $job->salary=$request->salary;
              $job->description=$request->description;
@@ -165,11 +196,13 @@ class JobsController extends Controller
 
         // Check if the authenticated user owns the job
         if ($job->user_id !== Auth::user()->id) {
+            $categories=Category::query()->orderBy("created_at","desc")->get();
             return redirect()->back()->with('error', 'You are not authorized to edit this job');
         }
 
         // Return the view for editing the job
-        return view('company.job.edit', compact('job'));
+        $categories=Category::query()->orderBy("created_at","desc")->get();
+        return view('company.job.edit', compact('job',"categories"));
     }
     public function updateJob(Request $request, $id)
     {
@@ -205,7 +238,8 @@ class JobsController extends Controller
               },
           ],
             "description"=>["required","string","max:255"],
-            "requirement"=>["required","string","max:255"]
+            "requirement"=>["required","string","max:255"],
+            "category"=>["required","string"]
        ]);
 
         // Update the job with the new data
@@ -214,10 +248,19 @@ class JobsController extends Controller
     "salary" => $request->salary,
     "deadline" => $request->deadline,
     "description" => $request->description,
-    "requirement" => $request->requirement
+    "requirement" => $request->requirement,
+    "category_id"=>$request->category
 ]);
 
         // Redirect back to the job list with a success message
         return redirect()->route('company.job')->with('success', 'Job updated successfully');
     }
+
+    public function viewApplication($slug,$id){
+        
+        $applications=jobApplication::query()->where("job_id", $id)->get();
+         return view("company.job.viewappliciant",compact("applications"));
+        
+    }
+
 }

@@ -107,12 +107,12 @@
                         <i class="fas fa-ban"></i>
                     </div>
                     <div class="mb-4">
-                        <h5 class="card-title mb-0 text-white">Blocked Jobs</h5>
+                        <h5 class="card-title mb-0 text-white">Blocked  Account</h5>
                     </div>
                     <div class="row align-items-center mb-2 d-flex">
                         <div class="col-8">
                             <h2 class="d-flex align-items-center mb-0">
-                                5
+                                {{$blocked}}
                             </h2>
                         </div>
                     </div>

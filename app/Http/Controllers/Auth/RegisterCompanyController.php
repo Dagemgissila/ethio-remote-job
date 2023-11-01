@@ -88,8 +88,8 @@ class RegisterCompanyController extends Controller
 
             DB::commit();
 
-            return redirect()->route('login')->with("message", "Company registration successful! Please wait for your account to be approved.
-             We will notify you by email.");
+            return back()->with("success", "Company registration successful! Please wait for your account to be approved.
+            We will notify you by email.");
          }
 
          catch(\Exception $e){
@@ -111,30 +111,30 @@ class RegisterCompanyController extends Controller
              "telegram"=>["max:255","url","nullable"],
              "password"=>["required","string","min:8","confirmed"]
         ]);
-        $user=new User;
-        $user->email=$request->email;
-        $user->password=$request->password;
-        $user->status=-1;
-        $user->assignRole('startup');
-        $user->save();
-
-        $startup=new Startup;
-        $startup->user_id=$user->id;
-        $startup->founder_name=$request->founder_name;
-        $startup->address=$request->address;
-        $startup->phone_number=$request->phone_number;
-        $startup->business_name=$request->business_name;
-        $startup->description=$request->description;
-        $startup->linkdelin=$request->linkdelin;
-        $startup->facebook=$request->facebook;
-        $startup->telegram=$request->telegram;
-        $startup->save();
-
-         DB::commit();
+      
 
         DB::beginTransaction();
         try{
-
+            $user=new User;
+            $user->email=$request->email;
+            $user->password=$request->password;
+            $user->status=-1;
+            $user->assignRole('startup');
+            $user->save();
+    
+            $startup=new Startup;
+            $startup->user_id=$user->id;
+            $startup->founder_name=$request->founder_name;
+            $startup->address=$request->address;
+            $startup->phone_number=$request->phone_number;
+            $startup->business_name=$request->business_name;
+            $startup->description=$request->description;
+            $startup->linkdelin=$request->linkdelin;
+            $startup->facebook=$request->facebook;
+            $startup->telegram=$request->telegram;
+            $startup->save();
+    
+             DB::commit();
 
              return back()->with("success", "Company registration successful! Please wait for your account to be approved.
               We will notify you by email.");

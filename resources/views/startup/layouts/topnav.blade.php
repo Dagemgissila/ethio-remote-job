@@ -6,13 +6,13 @@
 
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="/">Home</a>
+          <a class="nav-link" href="/" target="_blank">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{route('alljobs')}}">Jobs</a>
+          <a class="nav-link" href="{{route('alljobs')}}" target="_blank">Jobs</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Freelancer</a>
+          <a class="nav-link" href="{{route('freelancer')}}" target="_blank">Freelancer</a>
         </li>
       </ul>
 
@@ -21,14 +21,14 @@
         <li class="nav-item nav-profile dropdown d-none d-md-block">
           <a class="nav-link dropdown-toggle p-3" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
             <div class="nav-profile-image">
-              <img src="{{asset('home/img/logo.jpg')}}" alt="Profile" class="rounded-circle" style="width: 30px; height: 30px;">
+              <img src="{{asset('storage/profileImage/avater.jpg')}}" alt="Profile" class="rounded-circle mx-1" style="width: 40px; height: 40px;">
             </div>
-            Dagem Gissila
+           {{auth()->user()->email}}
           </a>
           <div class="dropdown-menu center navbar-dropdown xm-2" aria-labelledby="profileDropdown">
-            <a class="dropdown-item" href="#"><i class="bi bi-speedometer2"></i> Dashboard</a>
+           
             <a class="dropdown-item" href="#">
-                <form action="{{route("logout")}}" method="post">
+                <form action="{{route('logout')}}" method="post">
                     @csrf
                   <input type="submit" class="btn btn-primary" value="logout" id="">
                 </form>

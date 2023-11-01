@@ -6,10 +6,10 @@
 
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link" href="/">Home</a>
+          <a class="nav-link" href="/" target="_blank">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{route('alljobs')}}">Jobs</a>
+          <a class="nav-link" href="{{route('alljobs')}}" target="_blank">Jobs</a>
         </li>
        
       </ul>

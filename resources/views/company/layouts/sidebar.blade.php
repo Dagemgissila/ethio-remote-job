@@ -24,36 +24,26 @@
     <li class="nav-item">
       <a class="nav-link" href="{{route('company.job')}}">
         <i class="mdi mdi-account-group menu-icon"></i>
-        <span class="menu-title">Our Jobs</span>
+        <span class="menu-title">Jobs</span>
       </a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="pages/forms/basic_elements.html">
-      <i class="mdi mdi-message menu-icon"></i>
-        <span class="menu-title">Message</span>
-      </a>
-    </li>
-    
+  <a class="nav-link" href="{{route('company.profile')}}">
+    <i class="mdi mdi-account menu-icon"></i>
+    <span class="menu-title">Profile</span>
+  </a>
+</li>
 
     <li class="nav-item">
-      <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-        <i class="mdi mdi-account-settings menu-icon"></i>
-        <span class="menu-title">Manage Account</span>
-        <i class="menu-arrow"></i>
-      </a>
-      <div class="collapse" id="ui-basic">
-        <ul class="nav flex-column sub-menu">
-          <li class="nav-item">
-            <a class="nav-link" href="pages/ui-features/buttons.html">Companys Account</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="pages/ui-features/dropdowns.html">Job Seeker Account</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="pages/ui-features/typography.html">Manager Account</a>
-          </li>
-        </ul>
-      </div>
-    </li>
+  <a class="nav-link" href="{{route('company.changePassword')}}">
+    <i class="mdi mdi-lock menu-icon"></i>
+    <span class="menu-title">Change Password</span>
+  </a>
+</li>
+
+    
+
+  
+  
   </ul>
 </nav>

@@ -47,6 +47,14 @@ class AuthenticatedSessionController extends Controller
            
          }
 
+         if($user->status==0){
+            Auth::guard('web')->logout();
+            $request->session()->invalidate();
+            $request->session()->regenerateToken();
+            return  Redirect()->route("login")->with("error","Your Account is Restricted .Please contact admin");
+           
+         }
+
          if($role == "startup"){
             $request->session()->regenerate();
             return redirect("/startup/dashboard");

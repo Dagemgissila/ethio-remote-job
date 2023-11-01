@@ -173,6 +173,9 @@ color: #fff;
           $(document).ready(function(){
               $('#example').DataTable();
           });
+          $(document).ready(function(){
+              $('#application').DataTable();
+          });
     </script>
 
     <script src="https://code.jquery.com/jquery-3.7.0.js"></script>

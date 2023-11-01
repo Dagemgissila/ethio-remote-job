@@ -14,9 +14,9 @@ class JobapplicationController extends Controller
         return view("jobseeker.job.myapplication",compact("application"));
     }
 
-    public function deleteApplication($jobid,$app_id){
+    public function deleteApplication(Request $request){
       
-        $application=JobApplication::query()->where("job_id",$jobid)
+        $application=JobApplication::query()->where("job_id",$request->app_id)
         ->where("freelancer_id",auth()->user()->freelancer->id)->first();
         
 

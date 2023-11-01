@@ -38,39 +38,14 @@
         <span class="menu-title">Startups</span>
       </a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="">
-        <i class="mdi mdi-account menu-icon"></i>
-        <span class="menu-title">Freelancer</span>
-      </a>
-    </li>
+  
 
     <li class="nav-item">
-      <a class="nav-link" href="pages/tables/basic-table.html">
+      <a class="nav-link" href="{{route('admin.reportedJob')}}">
         <i class="mdi mdi-alert menu-icon"></i>
         <span class="menu-title">Reported Jobs</span>
       </a>
     </li>
 
-    <li class="nav-item">
-      <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-        <i class="mdi mdi-account-settings menu-icon"></i>
-        <span class="menu-title">Manage Account</span>
-        <i class="menu-arrow"></i>
-      </a>
-      <div class="collapse" id="ui-basic">
-        <ul class="nav flex-column sub-menu">
-          <li class="nav-item">
-            <a class="nav-link" href="pages/ui-features/buttons.html">Company Account</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="pages/ui-features/dropdowns.html">Job Seeker Account</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="pages/ui-features/typography.html">Manager Account</a>
-          </li>
-        </ul>
-      </div>
-    </li>
   </ul>
 </nav>

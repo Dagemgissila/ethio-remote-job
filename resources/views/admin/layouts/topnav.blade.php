@@ -9,19 +9,19 @@
           <a class="nav-link" href="/" target="_blank">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{route('alljobs')}}" target="_blank">Jobs</a>
+          <a class="nav-link d-none d-md-block mt-3" href="{{route('alljobs')}}" target="_blank">Jobs</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{route('freelancer')}}" target="_blank">Freelancer</a>
+          <a class="nav-link d-none d-md-block mt-3" href="{{route('freelancer')}}" target="_blank">Freelancer</a>
         </li>
       </ul>
       
       </ul>
       <ul class="navbar-nav navbar-nav-right">
-        <li class="nav-item nav-profile dropdown d-none d-md-block">
-          <a class="nav-link dropdown-toggle p-3" id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
+        <li class="nav-item nav-profile dropdown ">
+          <a class="nav-link dropdown-toggle p-3 " id="profileDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
             <div class="nav-profile-image">
-         
+              <img src="{{asset('storage/profileImage/avater.jpg')}}" alt="Profile" class="rounded-circle mx-1 d-none d-md-block" style="width: 40px; height: 40px;">
             </div>
              {{auth()->user()->email}}
           </a>

@@ -31,4 +31,8 @@ class Job extends Model
         return $this->hasMany(jobApplication::class,"job_id");
     }
 
+    public function job_report(){
+        return $this->hasMany(ReportedJob::class,"job_id");
+    }
+
 }

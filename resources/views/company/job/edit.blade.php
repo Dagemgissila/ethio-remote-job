@@ -13,7 +13,7 @@
                 <form method="POST" action="{{ route('updateJob',$job->id) }}">
                     @csrf
                     <div class="row g-3 my-1">
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="form-floating">
                                 <input type="text" class="form-control" value="{{$job->job_title}}"  name="job_title">
                                 <label for="">Job Title</label>
@@ -23,9 +23,9 @@
                                   <span class="text-danger">{{$message}}</span>
                                 @enderror
                             </div>
-                          
+
                         </div>
-                        <div class="col-4">
+                        <div class="col-6">
                             <div class="form-floating">
                                 <input type="text" name="salary" value="{{$job->salary}}"  class="form-control">
                                 <label for="">Salary</label>
@@ -35,7 +35,7 @@
                           @enderror
                         </div>
 
-                        <div class="col-4">
+                        <div class="col-6">
                             <div class="form-floating">
                                 <input type="date" name="deadline" value="{{$job->deadline}}"  class="form-control">
                                 <label for="">Deadline</label>
@@ -44,6 +44,21 @@
                             <span class="text-danger">{{$message}}</span>
                           @enderror
                         </div>
+
+                        <div class="col-6">
+    <div class="form-floating">
+        <select name="category" class="form-select" required name="category">
+            <option value="">Select a category</option>
+            @foreach($categories as $category)
+                <option value="{{ $category->id }}" {{ $category->id == $job->category_id ? 'selected' : '' }}>{{ $category->name }}</option>
+            @endforeach
+        </select>
+        <label for="category">Category</label>
+    </div>
+    @error("category")
+    <span class="text-danger">{{ $message }}</span>
+    @enderror
+</div>
 
                         <div class="col-12">
                             <div class="form-floating">
@@ -72,7 +87,7 @@
                         </div>
                      
                         <div class="col-3">
-                            <button class="btn btn-primary w-100 p-3" type="submit">Post </button>
+                            <button class="btn btn-primary w-100 p-3" type="submit">Update </button>
                         </div>
                     </div>
                 </form>

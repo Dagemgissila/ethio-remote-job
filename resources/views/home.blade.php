@@ -4,10 +4,10 @@
   <!-- Header End -->
   <div class="container-fluid py-5 bg-dark page-header ">
             <div class="container my-5 pt-5 pb-4">
-                <h1 class="display-3 text-white mb-3 animated slideInDown">Only Remote Jobs</h1>
+                <h1 class="display-3 text-white mb-3 animated slideInDown">Welcome to Maroset</h1>
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb text-white font-weight-bold">
-                        <li class="breadcrumb-item">The platform Which Directly connect Ethiopia Remote Job Owners With Remote Job Profesional for Free</li>
+                        <li class="breadcrumb-item">The platform that specifically connect Ethiopia remote job owners with remote job proffessionals</li>
                       
                     </ol>
                 </nav>
@@ -163,7 +163,7 @@
 
         <div class="container-fluid py-5">
             <div class="container">
-                <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Frequently Asked Questios</h1>
+                <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Frequently asked questios</h1>
                 <div class="accordion bg-none " id="accordionExample">
                    
  <!-- FAQ 1 -->
@@ -171,14 +171,14 @@
                 <h2 class="accordion-header bg-white" id="headingOne">
                     <button class="accordion-button me text-secondary bg-white collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        1. What is Ethio Remote Jobs?
+                        1. What is Maroset?
                     </button>
                 </h2>
                 <div id="collapseOne" class="accordion-collapse bg-white collapse" aria-labelledby="headingOne"
                     data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                        Ethio Remote Jobs is a platform dedicated to connecting Ethiopian professionals with remote job
-                        opportunities. We provide a wide range of services to both job seekers and employers in Ethiopia.
+                    Maroset is a platform dedicated to connecting Ethiopian professionals with only remote job opportunities.
+                     We provide a wide range of services to both job seekers and employers in Ethiopia
                     </div>
                 </div>
             </div>
@@ -188,14 +188,14 @@
                 <h2 class="accordion-header bg-white" id="headingTwo">
                     <button class="accordion-button me text-secondary bg-white collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                        2. What types of jobs are posted on Ethio Remote Jobs?
+                        2. What types of jobs are posted on Maroset?
                     </button>
                 </h2>
                 <div id="collapseTwo" class="accordion-collapse bg-white collapse" aria-labelledby="headingTwo"
                     data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                        On Ethio Remote Jobs, only remote job vacancies that can be done remotely are posted. This allows
-                        job seekers to find opportunities that offer flexibility and the ability to work from anywhere.
+                    On Maroset, only remote job vacancies that can be done remotely are posted.
+                     This allows job seekers to find opportunities that offer flexibility and the ability to work from anywhere.
                     </div>
                 </div>
             </div>
@@ -205,15 +205,15 @@
                 <h2 class="accordion-header bg-white" id="headingThree">
                     <button class="accordion-button me text-secondary bg-white collapsed" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseThree" aria-expanded="true" aria-controls="collapseThree">
-                        3. How can I find remote job opportunities on Ethio Remote Jobs?
+                        3. How can I find remote job opportunities on Maroset?
                     </button>
                 </h2>
                 <div id="collapseThree" class="accordion-collapse bg-white collapse" aria-labelledby="headingThree"
                     data-bs-parent="#accordionExample">
                     <div class="accordion-body">
-                        To find remote job opportunities, simply join our Telegram channel by [insert instructions to join
-                        the channel]. We regularly post remote job openings from various industries and sectors. Stay tuned
-                        and browse through the job listings in the channel to find suitable positions.
+                    To find remote job opportunities, simply join our Telegram channel <a href="https://t.me/Maroset">Maroset</a> and our website maroset.com.
+                     We regularly approve
+                     remote job openings from various industries and sectors. Stay tuned and browse through the job listings to find suitable positions
                     </div>
                 </div>
             </div>
@@ -221,24 +221,16 @@
                   </div>
 
                   <div class="w-100 d-flex justify-content-center my-3">
-                    <a href="/FAQ" class="btn btn-secondary">Browse More FAQ</a>
+                    <a href="/FAQ" class="btn btn-secondary">Browse more FAQ</a>
                </div>
 
             </div>
         </div>
         
-
-
-       
-
-
-      
-
-
         <!-- Contact Start -->
         <div class="container-xxl py-5">
             <div class="container">
-                <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Contact For Any Query</h1>
+                <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Contact for any query</h1>
                 <div class="row g-4">
                     <div class="col-12">
                         <div class="row gy-4">
@@ -264,6 +256,29 @@
                                         <i class="fa fa-phone-alt text-primary"></i>
                                     </div>
                                     <span>+012 345 6789</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                  
+                </div>
+            </div>
+        </div>
+
+        <div class="container-xxl py-5">
+            <div class="container">
+                <h1 class="text-center mb-5 wow fadeInUp" data-wow-delay="0.1s">Join our telegram channel</h1>
+                <div class="row g-4">
+                    <div class="col-12">
+                        <div class="row gy-4">
+                           
+                          
+                            <div class="col-md-6 wow fadeIn  " data-wow-delay="0.5s">
+                                <div class="d-flex align-items-center bg-secondary rounded p-4 shadow text-white">
+                                    <div class="bg-white border rounded d-flex flex-shrink-0 align-items-center justify-content-center me-3" style="width: 45px; height: 45px;">
+                                        <i class="fa fa-phone-alt text-primary"></i>
+                                    </div>
+                                    <span>Telegram channel</span>
                                 </div>
                             </div>
                         </div>

@@ -26,7 +26,7 @@
 
 <div class="row bg-white p-4">
     <h4 class="card-title">
-        <a href="{{route('company.postjob')}}" class="btn btn-primary">Post Job</a>
+        <a href="{{route('company.postjob')}}" class="btn btn-primary">Post New Job</a>
     </h4>
     <hr>
     @if(session()->has("success"))
@@ -78,6 +78,10 @@
     <a class="btn btn-primary" href="{{ route('editJob', ['id' => $job->id]) }}">
         <i class="fa fa-edit"></i> Edit
 </a>
+<a class="btn btn-warning" href="{{ route('company.viewApplication', ['id' => $job->id,'slug'=>$job->slug]) }}">
+    <i class="fa fa-file"></i> View Application
+</a>
+
     <button type="button" class="btn btn-danger deleteJob" value="{{$job->id}}">
         <i class="fa fa-trash"></i> Delete
     </button>

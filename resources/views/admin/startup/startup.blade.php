@@ -24,6 +24,30 @@
     </div>
   </div>
 </div>
+<div class="modal" id="Approve" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Approve Company</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to approve</p>
+       
+        <form action="{{route('admin.ApproveCompany')}}" method="POST">
+            @csrf
+            
+             <input type="hidden" name="company_id"   id="ap_id">
+          <button type="submmit" class="btn btn-success m-2">Approve</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="modal" id="RestrictAccount" tabindex="-1">
   <div class="modal-dialog">
@@ -64,7 +88,7 @@
             @csrf
             
              <input type="hidden" name="company_id"   id="a_id">
-          <button type="submmit" class="btn btn-success m-2">Approve</button>
+          <button type="submmit" class="btn btn-success m-2">Active</button>
         </form>
       </div>
       <div class="modal-footer">
@@ -123,13 +147,11 @@
                                 </a>
 
                                             @if($startup->startup_user->status== -1)
-                                              <form action="{{route('admin.ApproveCompany')}}" method="POST">
-                                                @csrf
-                                                 <input type="hidden" name="company_id" value="{{$startup->startup_user->id}}">
-                                              <button class="btn btn-success" type="submit">
+                                            <button class="btn btn-success Approve" value="{{$startup->startup_user->id}}" type="button">
                                                       <i class="fa fa-check"></i> Approve
-                                               </button>  
-                                              </form>
+                                               </button> 
+                                             
+
 
                                                 <button class="btn btn-danger deleteCompany" value="{{$startup->startup_user->id}}">
                                                       <i class="fa fa-trash"></i> Delete
@@ -184,6 +206,15 @@ $(document).ready(function(){
     var a_id = $(this).val();
     $('#a_id').val(a_id)
     $('#Active').modal('show');
+  });
+});
+
+$(document).ready(function(){
+  $('.Approve').click(function (e){
+    e.preventDefault();
+    var ap_id = $(this).val();
+    $('#ap_id').val(ap_id)
+    $('#Approve').modal('show');
   });
 });
 

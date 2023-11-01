@@ -31,11 +31,9 @@
                             <h5 class="mb-0">Founder: {{$startup->founder_name}}</h5>
                         </li>
                         <li class="list-group-item disabled">
-                            <h5 class="mb-0">Email: {{$startup->email}}</h5>
+                            <h5 class="mb-0">Email: {{$startup->startup_user->email}}</h5>
                         </li>
-                        <li class="list-group-item d-flex">
-                           
-                        </li>
+                       
                         <li class="list-group-item">
                             <h6 class="mb-1">Description:</h6>
                             {{$startup->description}}

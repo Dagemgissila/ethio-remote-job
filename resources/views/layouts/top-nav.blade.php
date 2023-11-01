@@ -1,7 +1,7 @@
 <!-- Navbar Start -->
 <nav class="navbar navbar-expand-lg bg-white navbar-light shadow sticky-top p-0">
   <a href="index.html" class="navbar-brand d-flex align-items-center text-center py-0 px-4 px-lg-5">
-    <img src="img/logo.jpg" alt="" height="50" weight="50">
+  <img src="{{asset('home/img/logo.jpg')}}" alt="Profile" class="rounded-circle" style="width: 100px; height: 100px;">
     <h1 class="m-0 text-secondary">Maroset</h1>
   </a>
   <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
@@ -61,35 +61,32 @@
                         <a class="dropdown-item" href="/{{Auth::user()->roles->pluck('name')->first()}}/dashboard"><i class="bi bi-speedometer2"></i> Dashboard</a>
                             <a href="job-detail.html" class="dropdown-item">
                             <form action="{{route('logout')}}" method="post">
-        @csrf
-       <button class="btn btn-secondary d-block">logout</button>
-      </form>
+                         @csrf
+                       <button class="btn btn-secondary d-block">logout</button>
+                         </form>
                             </a>
                         </div>
                     </div>
+                    @elseif(auth()->user()->roles()->pluck("name")->first() == "startup")
+                    <div class="nav-item dropdown  d-md-flex align-items-center justify-content-center">
+
+                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                        {{auth()->user()->email}}</a>
+                        <div class="dropdown-menu rounded-0 m-0">
+                        <a class="dropdown-item" href="/{{Auth::user()->roles->pluck('name')->first()}}/dashboard"><i class="bi bi-speedometer2"></i> Dashboard</a>
+                            <a href="job-detail.html" class="dropdown-item">
+                            <form action="{{route('logout')}}" method="post">
+                         @csrf
+                       <button class="btn btn-secondary d-block">logout</button>
+                         </form>
+                            </a>
+                        </div>
+                    </div>
+                    @endif
+
                  
 
-                    @elseif(auth()->user()->roles()->pluck("name")== "startup")
-<div class="nav-item dropdown d-md-flex align-items-center justify-content-center">
-@if(auth()->user()->freelancer->profile_image)
-<img src="{{asset('storage/'.auth()->user()->freelancer->profile_image)}}" alt="Profile" class="rounded-circle d-none d-md-block" style="width: 50px; height: 50px;">
-@endif
-<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
-{{auth()->user()->freelancer->firstname}}
-</a>
-<div class="dropdown-menu rounded-0 m-0">
-<a class="dropdown-item" href="/{{Auth::user()->roles->pluck('name')->first()}}/dashboard">
-<i class="bi bi-speedometer2"></i> Dashboard
-</a>
-<a href="job-detail.html" class="dropdown-item">
-<form action="{{route('logout')}}" method="post">
-@csrf
-<button>logout</button>
-</form>
-</a>
-</div>
-</div>
-@endif
+           
 
       @endauth
     </div>

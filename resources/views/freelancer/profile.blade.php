@@ -7,22 +7,7 @@
                 <nav aria-label="breadcrumb">
                 <div class="row g-2">
                     <div class="col-md-6 mx-auto">
-                        <div class="row g-2">
-                            <div class="col-md-4">
-                                <input type="text" class="form-control border-0" placeholder="Keyword" />
-                            </div>
-                            <div class="col-md-4">
-                                <select class="form-select border-0">
-                                    <option selected>Category</option>
-                                    <option value="1">Category 1</option>
-                                    <option value="2">Category 2</option>
-                                    <option value="3">Category 3</option>
-                                </select>
-                            </div>
-                            <div class="col-md-2">
-                        <button class="btn btn-dark border-0 w-100">Search</button>
-                    </div>
-                        </div>
+                       
                     </div>
                    
                 </div>
@@ -30,6 +15,7 @@
                 </nav>
             </div>
         </div>
+
 
 
 <div class="container ">
@@ -40,7 +26,7 @@
              
               <div class=" shadow p-4 ">
                  <div class="d-flex align-items-center gap-3 mb-2">
-                 <img src="https://images.unsplash.com/photo-1579353977828-2a4eab540b9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2FtcGxlfGVufDB8fDB8fHww&w=1000&q=80" alt="Profile Image" style="border-radius: 50%; width: 50px; height: 50px;">
+                 <img src="{{asset('storage/'.$freelancer->profile_image)}}" alt="Profile Image" style="border-radius: 50%; width: 50px; height: 50px;">
                 <h6>{{$freelancer->firstname. " ". $freelancer->lastname}}</h6>
 
                  </div>
@@ -58,7 +44,7 @@
               
                 <div class="mt-3 d-flex flex-column gap-2">
                     <button class="btn btn-secondary">Message Me</button>
-                    <button class="btn btn-secondary">Call Me</button>
+                    <a  href="tel:+251.{{$freelancer->phone_number}}" class="btn btn-secondary">Call Me +251-{{$freelancer->phone_number}}</a>
 
                 </div>
             </div>
@@ -183,8 +169,12 @@
            </div>
           
        </div>
+
+
+     
     
     </div>
+  
 </div>
 </div>
 

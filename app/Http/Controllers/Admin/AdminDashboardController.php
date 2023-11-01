@@ -18,6 +18,7 @@ class AdminDashboardController extends Controller
        $freelancer=Freelancer::count();
        $startup=Startup::count();
        $jobs=Job::count();
-        return view("admin.dashboard",compact("company","user","freelancer","startup","jobs"));
+       $blocked=User::query()->where("status",0)->count();
+        return view("admin.dashboard",compact("company","user","freelancer","startup","jobs","blocked"));
      }
 }
